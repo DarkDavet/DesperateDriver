@@ -1,9 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Player: MonoBehaviour
+public class Player: MonoBehaviour, IResetable
 {
-    public float speed = 10f;
     public float forwardSpeed = 5f;
     public float turnSpeed = 5f;
 
@@ -27,17 +26,18 @@ public class Player: MonoBehaviour
 
         m_Transform = transform;
         m_StartPosition = m_Transform.position;
-        m_StartSpeed = speed;
         m_StartForwardSpeed = forwardSpeed;
     }
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
+        /*isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
+
+        velocity.y = Physics.gravity.y * Time.deltaTime;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
 
@@ -45,6 +45,7 @@ public class Player: MonoBehaviour
         Vector3 horizontalMovement = m_Transform.right * moveHorizontal * speed * Time.deltaTime;
 
         Vector3 movement = forwardMovement + horizontalMovement;
+        controller.Move(velocity);
         controller.Move(movement);
 
         Vector3 direction = new Vector3(moveHorizontal, 0, 0);
@@ -53,16 +54,29 @@ public class Player: MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
             m_Transform.rotation = Quaternion.Slerp(m_Transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+        }*/
+
+        isGrounded = controller.isGrounded;
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
         }
+
+        velocity.y = Physics.gravity.y * Time.deltaTime; // Движение вперед
+        Vector3 forwardMovement = m_Transform.forward * forwardSpeed * Time.deltaTime; // Поворот влево/вправо
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        m_Transform.Rotate(0, moveHorizontal * 50f * turnSpeed * Time.deltaTime, 0);
+        Vector3 movement = forwardMovement;
+        controller.Move(velocity);
+        controller.Move(movement);
     }
 
-    public void ResetPlayer()
+    public void ResetObject()
     {
         controller.enabled = false;
         m_Transform.position = m_StartPosition;
         m_Transform.rotation = Quaternion.identity;
         velocity = Vector3.zero;
-        speed = m_StartSpeed;
         forwardSpeed = m_StartForwardSpeed;
         controller.enabled = true;
         Debug.Log("Reset is working");
@@ -70,7 +84,6 @@ public class Player: MonoBehaviour
 
     public void SpeedUp(float speedUp)
     {
-        speed += speedUp;
         forwardSpeed += speedUp;
         StartCoroutine(SpeedUpDuration());
     }
@@ -78,7 +91,6 @@ public class Player: MonoBehaviour
     IEnumerator SpeedUpDuration()
     {
         yield return new WaitForSeconds(3f);
-        speed = m_StartSpeed;
         forwardSpeed = m_StartForwardSpeed;
     }
 }

@@ -11,6 +11,9 @@ public class UIMoneyRemovePopupAnim: MonoBehaviour
     public float fadeOutDuration = 1f;
     public float scaleDuration = 1f;
 
+    private Vector3 initialPosition;
+    private Vector3 initialScale;
+
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -20,6 +23,9 @@ public class UIMoneyRemovePopupAnim: MonoBehaviour
         }
 
         canvasGroup.alpha = 0;
+
+        initialPosition = transform.localPosition;
+        initialScale = transform.localScale;
     }
 
 
@@ -30,10 +36,10 @@ public class UIMoneyRemovePopupAnim: MonoBehaviour
         Sequence sequence = DOTween.Sequence();
 
         sequence.Append(canvasGroup.DOFade(1, fadeInDuration))
-                .Join(transform.DOLocalMoveY(transform.localPosition.y - moveUpDistance, moveDuration).SetEase(Ease.Linear))
-                .Join(transform.DOScale(transform.localScale + new Vector3(0.1f, 0.1f, 0f), scaleDuration).SetEase(Ease.Linear))
-                .Append(transform.DOLocalMoveY(transform.localPosition.y - moveUpDistance, moveDuration).SetEase(Ease.Linear))
-                .Join(transform.DOScale(transform.localScale - new Vector3(0.1f, 0.1f, 0f), scaleDuration).SetEase(Ease.Linear))
+                .Join(transform.DOLocalMoveY(initialPosition.y - moveUpDistance, moveDuration).SetEase(Ease.Linear))
+                .Join(transform.DOScale(initialScale + new Vector3(0.1f, 0.1f, 0f), scaleDuration).SetEase(Ease.Linear))
+                .Append(transform.DOLocalMoveY(initialPosition.y - moveUpDistance, moveDuration).SetEase(Ease.Linear))
+                .Join(transform.DOScale(initialScale - new Vector3(0.1f, 0.1f, 0f), scaleDuration).SetEase(Ease.Linear))
                 .Join(canvasGroup.DOFade(0, fadeOutDuration).SetDelay(moveDuration - fadeOutDuration));
 
         sequence.Play();

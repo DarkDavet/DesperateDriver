@@ -1,15 +1,18 @@
 using TMPro;
 using UnityEngine;
 
-public class UIMoneyWidget : MonoBehaviour, IUIWidget
+public class UIMoneyWidget : MonoBehaviour, IUIWidget, IResetable
 {
     [SerializeField] private TextMeshProUGUI textMoneyBalance;
 
-    private int countMoneyBalance;
 
     public void UpdateWidget(int amount)
     {
-        countMoneyBalance += amount;
-        textMoneyBalance.text = countMoneyBalance.ToString();
+        textMoneyBalance.text = amount.ToString();
+    }
+
+    public void ResetObject()
+    {
+        textMoneyBalance.text = "0";
     }
 }
