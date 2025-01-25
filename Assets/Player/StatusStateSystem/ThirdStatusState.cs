@@ -6,22 +6,23 @@ public class ThirdStatusState : StatusState
 
     private StatusSet _statusSet;
     private Animator _statusAnimator;
-    private UIPlayerManager _uiPlayerManager;
+    private UIStatusStateWidget _uiStatusStateWidget;
     private LevelInventory _levelInventory;
 
-    public ThirdStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, Animator animator, UIPlayerManager uiPlayer, LevelInventory levelInventory) : base(statusStateController)
+    public ThirdStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, Animator animator, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory) : base(statusStateController)
     {
         _statusStateController = statusStateController;
 
         _statusSet = statusSet;
         _statusAnimator = animator;
-        _uiPlayerManager = uiPlayer;
+        _uiStatusStateWidget = uiStatusStateWidget;
         _levelInventory = levelInventory;
     }
 
     public override void Enter()
     {
         _statusSet.playerBody.SetActive(true);
+        _uiStatusStateWidget.SetStatusStateSettings(_statusSet.uiColor, _statusSet.statusName);
         //_statusAnimator.SetTrigger(_statusSet.tagAnimTrigger);
         // change color hud method to UIPlayerManager
     }

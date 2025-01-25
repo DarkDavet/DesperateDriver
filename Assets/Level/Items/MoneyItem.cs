@@ -4,16 +4,18 @@ using UnityEngine;
 public class MoneyItem : MonoBehaviour, IResetable
 {
     [SerializeField] private GameEvent m_MoneyAddEvent;
-    [SerializeField] private GameObject vfxEffect;
+    [SerializeField] private PoolManager objectPool;
+
+    private GameObject vfxEffect;
     private const string playerTag = "Player";
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag(playerTag))
         {
+            vfxEffect = objectPool.GetObject("GreenExplosionVFX", transform.position, transform.rotation);
             m_MoneyAddEvent.Raise();
             gameObject.SetActive(false);
-            Instantiate(vfxEffect, transform.position, transform.rotation);
         }
     }
 

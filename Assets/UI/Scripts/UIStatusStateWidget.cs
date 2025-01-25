@@ -6,9 +6,10 @@ public class UIStatusStateWidget : MonoBehaviour, IUIWidget, IResetable
 {
     [SerializeField] private Slider slider;
     [SerializeField] private Image fillImage;
+    [SerializeField] private Image handeImage;
+    [SerializeField] private TextMeshProUGUI titleName;
 
-    private Color sliderColor;
-    private TextMeshProUGUI titleName;
+    private Color stateColor;
 
     public void SetupSliderValue(int maxValue)
     {
@@ -23,12 +24,14 @@ public class UIStatusStateWidget : MonoBehaviour, IUIWidget, IResetable
         }
     }
 
-    public void SetStatusStateSetting(Color color, string title)
+    public void SetStatusStateSettings(Color color, string title)
     {
-        sliderColor = color;
+        stateColor = color;
         titleName.text = title;
+        titleName.color = stateColor;
 
-        fillImage.color = color;
+        fillImage.color = stateColor;
+        handeImage.color = stateColor;
     }
 
     public void ResetObject()

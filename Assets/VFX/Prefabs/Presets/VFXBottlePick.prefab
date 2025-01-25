@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2891550210427561305}
+  - component: {fileID: 3607807573450293850}
   m_Layer: 0
   m_Name: VFXBottlePick
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 7047065986141117453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3607807573450293850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870558119869224009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9c9a242d6784a41acf0e91bc5d350d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
+  objectName: RedExplosionVFX
 --- !u!1001 &8197024116506235221
 PrefabInstance:
   m_ObjectHideFlags: 0

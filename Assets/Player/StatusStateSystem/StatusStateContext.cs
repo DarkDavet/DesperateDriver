@@ -7,7 +7,7 @@ public class StatusStateContext : MonoBehaviour
 {
     [SerializeField] private List<StatusSet> _statusSets = new List<StatusSet>();
     [SerializeField] private Animator statusAnimator;
-    [SerializeField] private UIPlayerManager uIPlayerManager;
+    [SerializeField] private UIStatusStateWidget uiStatusStateWidget;
     [SerializeField] private LevelInventory levelInventory;
     
     private PlayerStatusStateController statusStateController;
@@ -16,9 +16,9 @@ public class StatusStateContext : MonoBehaviour
     {
         statusStateController = new PlayerStatusStateController();
 
-        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Poor"), statusAnimator, uIPlayerManager, levelInventory));
-        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Middle"), statusAnimator, uIPlayerManager, levelInventory));
-        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Rich"), statusAnimator, uIPlayerManager, levelInventory));
+        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Poor"), statusAnimator, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Middle"), statusAnimator, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Rich"), statusAnimator, uiStatusStateWidget, levelInventory));
 
         statusStateController.SetState<FirstStatusState>();
     }
