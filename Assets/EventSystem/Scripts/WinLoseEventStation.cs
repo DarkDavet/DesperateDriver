@@ -39,7 +39,8 @@ public class WinLoseEventStation: MonoBehaviour
 
     public void OnWin()
     {
-
+        LevelManager.Instance.NextLevel();
+        Debug.Log("NextLevel called from WinLoseEventStation.");
     }
 
     public void OnLose()

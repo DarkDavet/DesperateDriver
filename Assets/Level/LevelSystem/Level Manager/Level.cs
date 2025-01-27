@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace ButchersGames
-{
+
     public class Level : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
@@ -21,4 +20,3 @@ namespace ButchersGames
     }
 #endif
     }
-}

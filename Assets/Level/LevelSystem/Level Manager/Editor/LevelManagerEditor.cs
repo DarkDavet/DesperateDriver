@@ -2,8 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ButchersGames
-{
+
     [CustomEditor(typeof(LevelManager))]
     public class LevelManagerEditor : Editor
     {
@@ -71,4 +70,3 @@ namespace ButchersGames
         }
 
     }
-}
