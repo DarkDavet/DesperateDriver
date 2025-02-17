@@ -5,24 +5,25 @@ public class SecondStatusState : StatusState
     private PlayerStatusStateController _statusStateController;
 
     private StatusSet _statusSet;
-    private Animator _statusAnimator;
     private UIStatusStateWidget _uiStatusStateWidget;
     private LevelInventory _levelInventory;
+    private MeshRenderer _carBody;
 
-    public SecondStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, Animator animator, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory) : base(statusStateController)
+    public SecondStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, MeshRenderer carBody, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory) : base(statusStateController)
     {
         _statusStateController = statusStateController;
 
         _statusSet = statusSet;
-        _statusAnimator = animator;
         _uiStatusStateWidget = uiStatusStateWidget;
         _levelInventory = levelInventory;
+        _carBody = carBody;
     }
 
     public override void Enter()
     {
-        _statusSet.playerBody.SetActive(true);
+        //_statusSet.carMaterial.SetActive(true);
         _uiStatusStateWidget.SetStatusStateSettings(_statusSet.uiColor, _statusSet.statusName);
+        _carBody.material = _statusSet.carMaterial;
         //_statusAnimator.SetTrigger(_statusSet.tagAnimTrigger);
         // change color hud method to UIPlayerManager
     }
@@ -41,6 +42,6 @@ public class SecondStatusState : StatusState
 
     public override void Exit()
     {
-        _statusSet.playerBody.SetActive(false);
+        //_statusSet.playerBody.SetActive(false);
     }
 }

@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65672ac949ef27549b179f3e7e6b0018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LoseEvent: {fileID: 0}
+  m_LoseEvent: {fileID: 11400000, guid: 9eecb218549390042bfe281ca699d3e9, type: 2}

@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
@@ -9,9 +9,12 @@ public class WinLoseEventStation: MonoBehaviour
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private UIMoneyWidget uIMoneyWidget;
     [SerializeField] private UIPlayerManager uIPlayerManager;
-
     [SerializeField] private GameEventListener m_WinEventListener;
     [SerializeField] private GameEventListener m_LoseEventListener;
+
+    private StorageManager storageManager;
+    private InventoryBroker inventoryBroker;
+    private LevelManager levelManager;
 
     private MonoBehaviour[] sceneObjects;
     private List<IResetable> resetableCollection = new();
@@ -20,6 +23,10 @@ public class WinLoseEventStation: MonoBehaviour
     {
         m_WinEventListener.EventHandler = OnWin;
         m_LoseEventListener.EventHandler = OnLose;
+
+        storageManager = FindAnyObjectByType<StorageManager>();
+        inventoryBroker = FindAnyObjectByType<InventoryBroker>();
+        levelManager = FindAnyObjectByType<LevelManager>();
 
         sceneObjects = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
         resetableCollection.Add(levelInventory);
@@ -39,17 +46,21 @@ public class WinLoseEventStation: MonoBehaviour
 
     public void OnWin()
     {
-        LevelManager.Instance.NextLevel();
+        levelManager.NextLevel();
         Debug.Log("NextLevel called from WinLoseEventStation.");
+        inventoryBroker.TransferInventoryData();
+        storageManager.SaveGameData();
     }
 
     public void OnLose()
     {
-        ResetLevel();
+        levelManager.RestartLevel();
+        //ResetLevel();
     }
 
     public void ResetLevel()
     {
+        
         foreach (MonoBehaviour obj in sceneObjects)
         {
             if (obj is IResetable)
@@ -65,5 +76,4 @@ public class WinLoseEventStation: MonoBehaviour
 
         //resetableCollection.Clear();
     }
-
 }

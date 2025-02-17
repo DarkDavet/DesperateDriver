@@ -10,7 +10,7 @@ public class UIMoneyRemoveWidget: MonoBehaviour, IUIWidget
 
     public void UpdateWidget(int amount)
     {
-        amountMoneyRemoved = amount;
+        amountMoneyRemoved = - amount;
         textRemovedMoney.text = amountMoneyRemoved.ToString();
         animRemove.PlayPopupAnimation();
     }

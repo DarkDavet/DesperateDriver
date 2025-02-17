@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.ComponentModel;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Level Inventory")]
 public class LevelInventory: ScriptableObject, IResetable
@@ -13,8 +14,8 @@ public class LevelInventory: ScriptableObject, IResetable
     [Range(0, 10)]
     [SerializeField] private int lvlKeysLimit;
 
-    private int tmp_Money;
-    private int tmp_Keys;
+    [ReadOnly, SerializeField] private int tmp_Money;
+    [ReadOnly, SerializeField] private int tmp_Keys;
     private int Tmp_Money { get => tmp_Money; set => tmp_Money = Mathf.Clamp(value, 0, lvlMoneyLimit); }
     private int Tmp_Keys { get => tmp_Keys; set => tmp_Keys = Mathf.Clamp(value, 0, lvlKeysLimit); }
 

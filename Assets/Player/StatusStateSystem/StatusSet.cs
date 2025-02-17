@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatusSet
 {
     public string statusName;
-    public GameObject playerBody;
+    public Material carMaterial;
     public Color uiColor;
     public string tagAnimTrigger;
     public int moneyMinLimit;

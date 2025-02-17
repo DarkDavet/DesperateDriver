@@ -6,7 +6,7 @@ using UnityEngine;
 public class StatusStateContext : MonoBehaviour
 {
     [SerializeField] private List<StatusSet> _statusSets = new List<StatusSet>();
-    [SerializeField] private Animator statusAnimator;
+    [SerializeField] private MeshRenderer carBody;
     [SerializeField] private UIStatusStateWidget uiStatusStateWidget;
     [SerializeField] private LevelInventory levelInventory;
     
@@ -16,9 +16,9 @@ public class StatusStateContext : MonoBehaviour
     {
         statusStateController = new PlayerStatusStateController();
 
-        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Poor"), statusAnimator, uiStatusStateWidget, levelInventory));
-        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Middle"), statusAnimator, uiStatusStateWidget, levelInventory));
-        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Rich"), statusAnimator, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Poor"), carBody, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Middle"), carBody, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Rich"), carBody, uiStatusStateWidget, levelInventory));
 
         statusStateController.SetState<FirstStatusState>();
     }

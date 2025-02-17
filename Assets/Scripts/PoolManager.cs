@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : Singleton<PoolManager>
 {
     [System.Serializable]
     public class Pool
@@ -34,7 +34,7 @@ public class PoolManager : MonoBehaviour
 
     public GameObject GetObject(string tag, Vector3 position, Quaternion rotation)
     {
-        foreach(var pool in pools)
+        foreach (var pool in pools)
         {
             if (pool.tag == tag)
             {
@@ -55,7 +55,7 @@ public class PoolManager : MonoBehaviour
             if (pool.tag == tag)
             {
                 pool.pool.Release(obj);
-            }  
+            }
         }
     }
 }

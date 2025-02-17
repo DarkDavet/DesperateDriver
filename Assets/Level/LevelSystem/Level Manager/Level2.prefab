@@ -135,10 +135,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
       objectReference: {fileID: 11400000, guid: dc5ec549a2980fe42a40bf0bcb536178, type: 2}
@@ -208,10 +204,6 @@ PrefabInstance:
       propertyPath: vfxEffect
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
@@ -283,10 +275,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
       objectReference: {fileID: 11400000, guid: dc5ec549a2980fe42a40bf0bcb536178, type: 2}
@@ -357,10 +345,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
       objectReference: {fileID: 11400000, guid: dc5ec549a2980fe42a40bf0bcb536178, type: 2}
@@ -382,33 +366,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1830890524251115401}
     m_Modifications:
-    - target: {fileID: 273603883997546049, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 359584250980821069, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 1002067881903554376, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 1291989433945652279, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 1453535121832905338, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 1641199780421214994, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
+    - target: {fileID: 1802184972938775281, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1802184972938775281, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.9
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 2053156451259169529, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -454,92 +418,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2067114609412227098, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 2087200400253117317, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 2383506215718662329, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 2485968471108901972, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 2550917360550043503, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
     - target: {fileID: 2705081364929175365, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3274608214810644929, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3382625745270158515, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3570702121846277898, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 4044072748903506824, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 4326514328550023760, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 4847773574973936926, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 5405589687027352990, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 5582197956553751215, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 5597782051895913013, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 6950360837074721425, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 7137305010976329936, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 7211132720759004019, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 7283697159682324500, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_Name
       value: LevelStructure
       objectReference: {fileID: 0}
-    - target: {fileID: 8953717338838646706, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
+    - target: {fileID: 7791188985065032790, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_text
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668717745886280111, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: skyboxMat
       value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 9219747189571264195, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
+      objectReference: {fileID: 2100000, guid: a2396d2018980084993e4dcf02d18eed, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8331991671327761938, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9189274667783466543, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       insertIndex: 7
@@ -574,17 +499,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2065563958531047153, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
   m_PrefabInstance: {fileID: 5108895280980853752}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7428380264869834381 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2445623161197047157, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
-  m_PrefabInstance: {fileID: 5108895280980853752}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cab79af206f57a4281cf963e80a34c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6103875710309095607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,10 +555,6 @@ PrefabInstance:
       propertyPath: vfxEffect
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
@@ -716,10 +626,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 
       objectReference: {fileID: 11400000, guid: dc5ec549a2980fe42a40bf0bcb536178, type: 2}
@@ -789,10 +695,6 @@ PrefabInstance:
       propertyPath: vfxEffect
       value: 
       objectReference: {fileID: 1018397785281430084, guid: 375453d499e8cf54e879dc982d45c51a, type: 3}
-    - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 7428380264869834381}
     - target: {fileID: 3678746157621531716, guid: 682f0683aef1e9d408c9a4edc2a1206b, type: 3}
       propertyPath: m_MoneyAddEvent
       value: 

@@ -3,8 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using System.Linq;
+using DG.Tweening;
 
-public class LevelManager : Singleton<LevelManager>
+public class LevelManager : MonoBehaviour
 {
     const string CurrentLevel_PrefsKey = "Current Level";
     const string CompleteLevelCount_PrefsKey = "Complete Lvl Count";
@@ -15,11 +16,12 @@ public class LevelManager : Singleton<LevelManager>
     {
         get
         {
-            return (CompleteLevelCount < Instance.Levels.Count ? Instance.CurrentLevelIndex : CompleteLevelCount) + 1;
+            return PlayerPrefs.GetInt(CurrentLevel_PrefsKey);
+                //(CompleteLevelCount < Instance.Levels.Count ? Instance.CurrentLevelIndex : CompleteLevelCount) + 1;
         }
         set
         {
-            PlayerPrefs.GetInt(CurrentLevel_PrefsKey, value);
+            PlayerPrefs.SetInt(CurrentLevel_PrefsKey, value);
         }
     }
     public static int CompleteLevelCount
@@ -63,12 +65,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public event Action OnLevelStarted;
 
-    private void Start()
-    {
-        Init();
-    }
-
-    public void Init()
+    public void Start()
     {
 #if !UNITY_EDITOR
             editorMode = false;
@@ -76,6 +73,7 @@ public class LevelManager : Singleton<LevelManager>
         if (!editorMode)
         {
             SelectLevel(LastLevelIndex, true);
+            
         }
 
         if (LastLevelIndex != CurrentLevel)
@@ -87,17 +85,19 @@ public class LevelManager : Singleton<LevelManager>
     private void OnDestroy()
     {
         LastLevelIndex = CurrentLevelIndex;
+        ClearDOTween();
     }
 
     private void OnApplicationQuit()
     {
         LastLevelIndex = CurrentLevelIndex;
+        ClearDOTween();
     }
-
 
     public void StartLevel()
     {
-        OnLevelStarted?.Invoke();
+        //Init();
+        //OnLevelStarted?.Invoke();
     }
 
     public void RestartLevel()
@@ -110,7 +110,7 @@ public class LevelManager : Singleton<LevelManager>
         if (!editorMode)
         {
             CurrentLevel++;
-            Debug.Log("CurrentLevel incremented: " + CurrentLevel);
+           // Debug.Log("CurrentLevel incremented: " + CurrentLevel);
         }
         SelectLevel(CurrentLevelIndex + 1);
         Debug.Log("Next Level Index: " + (CurrentLevelIndex + 1));
@@ -121,7 +121,7 @@ public class LevelManager : Singleton<LevelManager>
         if (indexCheck)
             levelIndex = GetCorrectedIndex(levelIndex);
 
-        Debug.Log("Selected Level Index: " + levelIndex);
+       // Debug.Log("Selected Level Index: " + levelIndex);
 
         if (Levels[levelIndex] == null)
         {
@@ -133,10 +133,17 @@ public class LevelManager : Singleton<LevelManager>
 
         if (level)
         {
+            ClearDOTween();
             SetLevelParams(level);
             CurrentLevelIndex = levelIndex;
             Debug.Log("CurrentLevelIndex updated: " + CurrentLevelIndex);
         }
+    }
+
+    private void ClearDOTween()
+    {
+        DOTween.KillAll(); // Kill all tweens
+        DOTween.Clear();   // Clear all tweens
     }
 
 
@@ -168,8 +175,15 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (level)
         {
-            ClearChilds();
-            Debug.Log("Cleared previous level objects.");
+            if (!Application.isPlaying)
+            {
+                ClearChildsEditorVer();
+            }
+            else
+            {
+                ClearChildsRunTimeVer();
+            }
+            //Debug.Log("Cleared previous level objects.");
 #if UNITY_EDITOR
             if (Application.isPlaying)
             {
@@ -187,21 +201,28 @@ public class LevelManager : Singleton<LevelManager>
     }
 
 
-    private void ClearChilds()
+    private void ClearChildsEditorVer()
     {
-        // Collect all child game objects in a list
+        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject destroyObject = transform.GetChild(i).gameObject;
+            DestroyImmediate(destroyObject);
+        }
+    }
+
+    private void ClearChildsRunTimeVer() 
+    {
         List<GameObject> children = new List<GameObject>();
         for (int i = 0; i < transform.childCount; i++)
         {
             children.Add(transform.GetChild(i).gameObject);
         }
 
-        // Destroy all child game objects
         foreach (GameObject child in children)
         {
-            Destroy(child); // Use Destroy instead of DestroyImmediate
+            Destroy(child); 
         }
-
-        Debug.Log("Cleared all child objects.");
+       // Debug.Log("Cleared all child objects.");
     }
 }

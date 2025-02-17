@@ -5,7 +5,6 @@ using UnityEngine;
 public class BottleItem : MonoBehaviour, IResetable
 {
     [SerializeField] private GameEvent m_BottlePickEvent;
-    [SerializeField] private PoolManager objectPool;
     
     private GameObject vfxEffect;
     private const string playerTag = "Player";
@@ -14,7 +13,7 @@ public class BottleItem : MonoBehaviour, IResetable
     {
         if (collider.CompareTag(playerTag))
         {
-            vfxEffect = objectPool.GetObject("RedExplosionVFX", transform.position, transform.rotation);
+            vfxEffect = PoolManager.Instance.GetObject("RedExplosionVFX", transform.position, transform.rotation);
             m_BottlePickEvent.Raise();
             gameObject.SetActive(false);
         }

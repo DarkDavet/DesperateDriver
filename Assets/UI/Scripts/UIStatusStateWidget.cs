@@ -26,6 +26,7 @@ public class UIStatusStateWidget : MonoBehaviour, IUIWidget, IResetable
 
     public void SetStatusStateSettings(Color color, string title)
     {
+        Debug.Log("Status settings set");
         stateColor = color;
         titleName.text = title;
         titleName.color = stateColor;
