@@ -41,7 +41,7 @@ public class Transmission : MonoBehaviour
             SwitchGears();
         }
         //Debug.Log($"speed: {VehicelAccessoryController.Instance.speedInfo}; torque: {wheelController.torque}");
-        Debug.Log($"gear^ {currentGear}");
+        //Debug.Log($"gear^ {currentGear}");
     }
 
     public void SwitchGears()

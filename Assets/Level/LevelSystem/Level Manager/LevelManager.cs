@@ -5,25 +5,12 @@ using System;
 using System.Linq;
 using DG.Tweening;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : SingletonLocal<LevelManager>
 {
-    const string CurrentLevel_PrefsKey = "Current Level";
     const string CompleteLevelCount_PrefsKey = "Complete Lvl Count";
     const string LastLevelIndex_PrefsKey = "Last Level Index";
     const string CurrentAttempt_PrefsKey = "Current Attempt";
 
-    public static int CurrentLevel
-    {
-        get
-        {
-            return PlayerPrefs.GetInt(CurrentLevel_PrefsKey);
-                //(CompleteLevelCount < Instance.Levels.Count ? Instance.CurrentLevelIndex : CompleteLevelCount) + 1;
-        }
-        set
-        {
-            PlayerPrefs.SetInt(CurrentLevel_PrefsKey, value);
-        }
-    }
     public static int CompleteLevelCount
     {
         get
@@ -65,7 +52,7 @@ public class LevelManager : MonoBehaviour
 
     public event Action OnLevelStarted;
 
-    public void Start()
+    public void DefaultInit()
     {
 #if !UNITY_EDITOR
             editorMode = false;
@@ -73,16 +60,10 @@ public class LevelManager : MonoBehaviour
         if (!editorMode)
         {
             SelectLevel(LastLevelIndex, true);
-            
-        }
-
-        if (LastLevelIndex != CurrentLevel)
-        {
-            CurrentAttempt = 0;
         }
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         LastLevelIndex = CurrentLevelIndex;
         ClearDOTween();
@@ -107,13 +88,7 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (!editorMode)
-        {
-            CurrentLevel++;
-           // Debug.Log("CurrentLevel incremented: " + CurrentLevel);
-        }
         SelectLevel(CurrentLevelIndex + 1);
-        Debug.Log("Next Level Index: " + (CurrentLevelIndex + 1));
     }
 
     public void SelectLevel(int levelIndex, bool indexCheck = true)
@@ -137,6 +112,7 @@ public class LevelManager : MonoBehaviour
             SetLevelParams(level);
             CurrentLevelIndex = levelIndex;
             Debug.Log("CurrentLevelIndex updated: " + CurrentLevelIndex);
+            Debug.Log("LastLevelIndex updated: " + LastLevelIndex);
         }
     }
 
@@ -156,7 +132,7 @@ public class LevelManager : MonoBehaviour
             return levelIndex > Levels.Count - 1 || levelIndex <= 0 ? 0 : levelIndex;
         else
         {
-            int levelId = CurrentLevel;
+            int levelId = levelIndex;
             if (levelId > Levels.Count - 1)
             {
                 if (levels.randomizedLvls)

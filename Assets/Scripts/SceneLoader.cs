@@ -2,18 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : Singleton<SceneLoader>
+public class SceneLoader : SingletonGlobal<SceneLoader>
 {
     public void LoadGameplayScene()
     {
-        Debug.Log("Gameplay scene loaded");
         StartCoroutine(LoadAndStartGameplay());
         //SceneManager.LoadSceneAsync(Scenes.GAMEPLAY);
     }
 
     public void LoadMainMenuScene()
     {
-        Debug.Log("MainMenu> scene loaded");
         StartCoroutine(LoadAndStartMainMenu());
     }
     private IEnumerator LoadAndStartGameplay()

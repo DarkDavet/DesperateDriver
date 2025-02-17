@@ -3,16 +3,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameSetups", menuName = "Data/Game Setups")]
 public class GameSettings : ScriptableObject
 {
-    private int selectedlevel;
+    [SerializeField, ReadOnly] private int selectedLevel;
+    [SerializeField, ReadOnly] private bool isLevelSelected;
+
     public int SelectedLevel
     {
-        get 
-        {  
-            return selectedlevel; 
-        }
-        set
-        {
-            selectedlevel = value;
-        }
+        get => selectedLevel;
+        set => selectedLevel = value;
+    }
+
+    public bool IsLevelSelected
+    {
+        get => isLevelSelected;
+        set => isLevelSelected = value;
+    }
+
+    public void ResetSettings()
+    {
+        isLevelSelected = false;
     }
 }

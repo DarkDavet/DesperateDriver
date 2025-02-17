@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PoolManager : Singleton<PoolManager>
+public class PoolManager : SingletonLocal<PoolManager>
 {
     [System.Serializable]
     public class Pool

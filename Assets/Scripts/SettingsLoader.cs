@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SettingsLoader : Singleton<SettingsLoader>
+public class SettingsLoader : MonoBehaviour
 {
     [SerializeField] private GameSettings gameSettings;
     [SerializeField] private LevelsList levelsList;
@@ -18,10 +18,12 @@ public class SettingsLoader : Singleton<SettingsLoader>
         if (level >= 0 && level <= lvlsList.Count)
         {
             gameSettings.SelectedLevel = level;
+            gameSettings.IsLevelSelected = true;
         }
         else
         {
             Debug.Log($"Incorrect level index: {gameSettings.SelectedLevel}");
         }
+        SceneLoader.Instance.LoadGameplayScene();
     }
 }
