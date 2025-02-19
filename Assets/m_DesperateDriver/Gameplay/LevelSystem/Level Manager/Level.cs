@@ -1,9 +1,21 @@
+using System;
 using UnityEngine;
 
 
     public class Level : MonoBehaviour
     {
-        [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField, Range(1,20)] private int levelIndex;
+    public bool isPlayable = false;
+
+    private void Start()
+    {
+        isPlayable = false;
+    }
+    public int GetLevelIndex()
+    {
+        return levelIndex;
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

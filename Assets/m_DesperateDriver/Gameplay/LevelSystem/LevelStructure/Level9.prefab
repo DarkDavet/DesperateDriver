@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1830890524251115401}
   - component: {fileID: 4276760321131721706}
   m_Layer: 0
-  m_Name: Level3
+  m_Name: Level9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPoint: {fileID: 3704099787599346500}
-  levelIndex: 3
+  levelIndex: 9
   isPlayable: 0
 --- !u!1001 &936255182694302504
 PrefabInstance:
@@ -458,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791188985065032790, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_text
-      value: Level 3
+      value: Level 9
       objectReference: {fileID: 0}
     - target: {fileID: 8668717745886280111, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: skyboxMat

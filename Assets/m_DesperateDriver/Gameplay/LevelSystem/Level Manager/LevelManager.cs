@@ -48,9 +48,23 @@ public class LevelManager : SingletonLocal<LevelManager>
 
     [SerializeField] bool editorMode = false;
     [SerializeField] LevelsList levels;
-    public List<Level> Levels => levels.lvls;
+    private List<Level> playeableLevels = new();
 
     public event Action OnLevelStarted;
+
+    public void InitPlayableLevels()
+    {
+        playeableLevels.Clear();
+        foreach (var level in levels.lvls)
+        {
+            if (level.isPlayable == true)
+            {
+                playeableLevels.Add(level);
+                Debug.Log($"Added playable level: {level.name}");
+            }
+        }
+        Debug.Log($"Total playable levels: {playeableLevels.Count}");
+    }
 
     public void DefaultInit()
     {
@@ -91,20 +105,49 @@ public class LevelManager : SingletonLocal<LevelManager>
         SelectLevel(CurrentLevelIndex + 1);
     }
 
+    public int GetLevelIndexByName(int levelNumber)
+    {
+
+        Debug.Log($"Searched levelNumber: {levelNumber}");
+        for (int i = 0; i < playeableLevels.Count; i++)
+        {
+            Debug.Log($"{i}-element has number: {playeableLevels[i].GetLevelIndex()}");
+            if (playeableLevels[i].GetLevelIndex() == levelNumber)
+            {
+                return i;
+            }
+        }
+        Debug.Log("<color=red>Level not found!</color>");
+        return -1; // Возвращаем -1, если уровень не найден
+    }
+    public void SelectDesiredLevel(int levelNumber)
+    {
+        InitPlayableLevels();
+        int levelIndex = GetLevelIndexByName(levelNumber);
+        if (levelIndex == -1)
+        {
+            return; // Прекращаем выполнение метода, если уровень не найден
+        }
+        SelectLevel(levelIndex, true);
+    }
+
     public void SelectLevel(int levelIndex, bool indexCheck = true)
     {
+        
         if (indexCheck)
+        {
             levelIndex = GetCorrectedIndex(levelIndex);
+        }
 
        // Debug.Log("Selected Level Index: " + levelIndex);
 
-        if (Levels[levelIndex] == null)
+        if (playeableLevels[levelIndex] == null)
         {
             Debug.Log("<color=red>There is no prefab attached!</color>");
             return;
         }
 
-        var level = Levels[levelIndex];
+        var level = playeableLevels[levelIndex];
 
         if (level)
         {
@@ -129,19 +172,19 @@ public class LevelManager : SingletonLocal<LevelManager>
     private int GetCorrectedIndex(int levelIndex)
     {
         if (editorMode)
-            return levelIndex > Levels.Count - 1 || levelIndex <= 0 ? 0 : levelIndex;
+            return levelIndex > playeableLevels.Count - 1 || levelIndex <= 0 ? 0 : levelIndex;
         else
         {
             int levelId = levelIndex;
-            if (levelId > Levels.Count - 1)
+            if (levelId > playeableLevels.Count - 1)
             {
                 if (levels.randomizedLvls)
                 {
-                    List<int> lvls = Enumerable.Range(0, levels.lvls.Count).ToList();
+                    List<int> lvls = Enumerable.Range(0, playeableLevels.Count).ToList();
                     lvls.RemoveAt(CurrentLevelIndex);
                     return lvls[UnityEngine.Random.Range(0, lvls.Count)];
                 }
-                else return levelIndex % levels.lvls.Count;
+                else return levelIndex % playeableLevels.Count;
             }
             return levelId;
         }

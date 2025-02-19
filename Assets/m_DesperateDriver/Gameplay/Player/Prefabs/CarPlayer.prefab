@@ -743,8 +743,8 @@ MonoBehaviour:
     tagAnimTrigger: 
     moneyMinLimit: 141
     moneyMaxLimit: 200
-  carBody: {fileID: 0}
-  uiStatusStateWidget: {fileID: 0}
+  carBody: {fileID: 1932395839632993975}
+  uiStatusStateWidget: {fileID: 8607833368170827401}
   levelInventory: {fileID: 11400000, guid: dde887e15df7c37408546e00a92a5cfb, type: 2}
 --- !u!1 &1910254882826532422
 GameObject:
@@ -1455,6 +1455,11 @@ GameObject:
 --- !u!4 &1914708612391341161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4784967493720354, guid: 8e4300b7bafcc74418f53c67ca571e4f, type: 3}
+  m_PrefabInstance: {fileID: 1910254881836242251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1932395839632993975 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23548749696105468, guid: 8e4300b7bafcc74418f53c67ca571e4f, type: 3}
   m_PrefabInstance: {fileID: 1910254881836242251}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2353637181791276652

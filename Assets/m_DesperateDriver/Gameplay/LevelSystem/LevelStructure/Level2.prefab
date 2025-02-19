@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPoint: {fileID: 3704099787599346500}
+  levelIndex: 2
+  isPlayable: 0
 --- !u!1001 &936255182694302504
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class WinLoseEventStation: MonoBehaviour
         levelManager.NextLevel();
         Debug.Log("NextLevel called from WinLoseEventStation.");
         inventoryBroker.TransferInventoryData();
-        storageManager.SaveGameData();
+        storageManager.SaveGameInventoryData();
     }
 
     public void OnLose()

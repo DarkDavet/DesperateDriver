@@ -15,7 +15,7 @@ public class SettingsLoader : MonoBehaviour
 
     public void SetLoadedLevel(int level)
     {
-        if (level >= 0 && level <= lvlsList.Count)
+        if (level >= 1 && level <= lvlsList.Count)
         {
             gameSettings.SelectedLevel = level;
             gameSettings.IsLevelSelected = true;

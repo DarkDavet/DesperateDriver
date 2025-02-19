@@ -12,7 +12,7 @@ public class GameplayEntrySetup : MonoBehaviour
     {
         if (CheckLevelSelection())
         {
-            LevelManager.Instance.SelectLevel(gameSettings.SelectedLevel, true);
+            LevelManager.Instance.SelectDesiredLevel(gameSettings.SelectedLevel);
             gameSettings.ResetSettings();
         }
         else
