@@ -90,6 +90,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+--- !u!114 &3366120215366734998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2888984368396520936, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+  m_PrefabInstance: {fileID: 477776807615814014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b7bac6281467e4a87d6d2293df3cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3382228438115343686 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2905228173497762872, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
@@ -139,6 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b7bac6281467e4a87d6d2293df3cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8444777018335658150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8327358627050150360, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+  m_PrefabInstance: {fileID: 477776807615814014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b7bac6281467e4a87d6d2293df3cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4429831100692731595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +182,10 @@ PrefabInstance:
       value: EventStations
       objectReference: {fileID: 0}
     - target: {fileID: 6750727949432123113, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
+      propertyPath: m_PickFuelEventListener
+      value: 
+      objectReference: {fileID: 8444777018335658150}
+    - target: {fileID: 6750727949432123113, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
       propertyPath: m_PickMoneyEventListener
       value: 
       objectReference: {fileID: 7955166256667375961}
@@ -167,6 +193,10 @@ PrefabInstance:
       propertyPath: m_PickBottleEventListener
       value: 
       objectReference: {fileID: 3382228438115343686}
+    - target: {fileID: 6750727949432123113, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
+      propertyPath: m_UseGasStationEventListener
+      value: 
+      objectReference: {fileID: 3366120215366734998}
     - target: {fileID: 6781572152862183322, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

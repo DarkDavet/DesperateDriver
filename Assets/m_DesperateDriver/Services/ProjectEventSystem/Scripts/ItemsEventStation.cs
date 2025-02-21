@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
@@ -5,15 +6,20 @@ public class ItemsEventStation: MonoBehaviour
 {
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private UIPlayerManager uIPlayerManager;
+    [SerializeField] private FuelTank fuelTank;
 
     [SerializeField] private GameEventListener m_PickMoneyEventListener;
     [SerializeField] private GameEventListener m_PickBottleEventListener;
+    [SerializeField] private GameEventListener m_PickFuelEventListener;
+    [SerializeField] private GameEventListener m_UseGasStationEventListener;
 
     private int genereatedAmount;
     void Start()
     {
         m_PickMoneyEventListener.EventHandler = OnMoneyPick;
         m_PickBottleEventListener.EventHandler = OnBottlePick;
+        m_PickFuelEventListener.EventHandler = OnFuelPick;
+        m_UseGasStationEventListener.EventHandler = OnGasStationUse;
 
         levelInventory.Initialize();
     }
@@ -22,12 +28,16 @@ public class ItemsEventStation: MonoBehaviour
     {
         m_PickMoneyEventListener.Subscribe();
         m_PickBottleEventListener.Subscribe();
+        m_PickFuelEventListener.Subscribe();
+        m_UseGasStationEventListener.Subscribe();
     }
 
     private void OnDisable()
     {
         m_PickMoneyEventListener.Unsubscribe() ;
         m_PickBottleEventListener.Unsubscribe();
+        m_PickFuelEventListener.Unsubscribe();
+        m_UseGasStationEventListener.Unsubscribe();
     }
 
     public void OnMoneyPick()
@@ -46,4 +56,18 @@ public class ItemsEventStation: MonoBehaviour
         AudioManager.Instance.Play("RemoveMoney");
     }
 
+    public void OnFuelPick()
+    {
+        fuelTank.IncreaseFuelLevel(5);
+    }
+
+    public void OnGasStationUse()
+    {
+        if ((fuelTank.CurrentFuel < fuelTank.MaxFuel) && levelInventory.RequestPayment(1))
+        {
+            fuelTank.IncreaseFuelLevel(1f);
+            Debug.Log($"Current fuel level: {fuelTank.CurrentFuel}");
+            Debug.Log($"Max fuel level: {fuelTank.MaxFuel}");
+        }
+    }
 }

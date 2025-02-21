@@ -26,7 +26,9 @@ public class VehicelAccessoryController : MonoBehaviour
     private Rigidbody rb;
     [NonSerialized]
     public float speedInfo;
-    private float distanceInfo;
+    private float speedTech;
+    private float distanceTotalInfo;
+    private float distancePerFrameInfo;
     private float fuelInfo;
  
     private void Start()
@@ -50,18 +52,20 @@ public class VehicelAccessoryController : MonoBehaviour
 
     private void MechanicAccessoryUpdate()
     {
-        speedInfo = speedometer.CalculateSpeed(transform.InverseTransformVector(rb.linearVelocity).z);
-        distanceInfo = tach.CalculateDistance(speedInfo);
+        speedTech = Mathf.Abs(transform.InverseTransformVector(rb.linearVelocity).z);
+        speedInfo = speedometer.CalculateSpeed(speedTech);
+        distancePerFrameInfo = tach.ShowDistancePerFrame();
+        distanceTotalInfo = tach.CalculateDistance(speedInfo);
 
         transmission.UpdateGears();
 
         uiManager.ShowSpeed(speedInfo);
-        uiManager.ShowDistance(distanceInfo);
+        uiManager.ShowDistance(distanceTotalInfo);
     }
 
     private void ElectroAccessoryUpdate()
     {
-        fuelInfo = fuelTank.DecreaseFuelLevel(tach.ShowDistancePerFrame()); //???
+        fuelInfo = fuelTank.DecreaseFuelLevel(distancePerFrameInfo); 
         transmission.SwitchGears();
 
         if (Input.GetKeyDown(switchFrontLight))

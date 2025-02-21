@@ -639,9 +639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelBar: {fileID: 0}
-  maxFuel: 60
-  consuptionFuelActive: 0.3
-  consuptionFuelPassive: 0.03
+  m_LoseEvent: {fileID: 11400000, guid: 9eecb218549390042bfe281ca699d3e9, type: 2}
+  maxFuel: 30
+  consuptionFuelActive: 1
+  consuptionFuelPassive: 0.346
 --- !u!114 &1910254882777235086
 MonoBehaviour:
   m_ObjectHideFlags: 0

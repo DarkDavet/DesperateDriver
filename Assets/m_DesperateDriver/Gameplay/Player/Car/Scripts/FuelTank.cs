@@ -5,6 +5,7 @@ using UnityEngine;
 public class FuelTank : MonoBehaviour
 {
     [SerializeField] private SliderController fuelBar;
+    [SerializeField] private GameEvent m_LoseEvent;
 
     [SerializeField] private float maxFuel;
 
@@ -14,26 +15,42 @@ public class FuelTank : MonoBehaviour
     [SerializeField] private float consuptionFuelPassive = 0.03f;
 
     private float currentFuel;
+    public float MaxFuel { get => maxFuel; }
+    public float CurrentFuel { get => currentFuel; private set => currentFuel = Mathf.Clamp(value, 0, maxFuel); }
 
-    private float kilometer = 0;
+    private float consupDistance = 0;
 
     private void Start()
     {
-        currentFuel = maxFuel;
-        fuelBar.SetupBar(currentFuel);
+        CurrentFuel = MaxFuel;
+        fuelBar.SetupBar(CurrentFuel);
     }
 
     public float DecreaseFuelLevel(float distance)
     {
-        kilometer += distance;
-        if (kilometer >= 1)
+        consupDistance += distance;
+        if (consupDistance >= 0.05)
         {
-            currentFuel -= consuptionFuelActive;
-            fuelBar.UpdateBar(currentFuel);
-            kilometer = 0;
+            CurrentFuel -= consuptionFuelActive;
+            consupDistance = 0;
+            fuelBar.UpdateBar(CurrentFuel);
         }
-        currentFuel -= consuptionFuelPassive * Time.deltaTime;
 
-        return currentFuel;
+        if (CurrentFuel == 0)
+        {
+            m_LoseEvent.Raise();
+        }
+        //CurrentFuel -= consuptionFuelPassive * Time.deltaTime; 
+        return CurrentFuel;
+    }
+
+    public float IncreaseFuelLevel(float fuelAmount)
+    {
+        if (fuelAmount > 0)
+        {
+            CurrentFuel += fuelAmount;
+            fuelBar.UpdateBar(CurrentFuel);
+        }
+        return CurrentFuel;
     }
 }

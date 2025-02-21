@@ -16,8 +16,8 @@ public class LevelInventory: ScriptableObject, IResetable
 
     [ReadOnly, SerializeField] private int tmp_Money;
     [ReadOnly, SerializeField] private int tmp_Keys;
-    private int Tmp_Money { get => tmp_Money; set => tmp_Money = Mathf.Clamp(value, 0, lvlMoneyLimit); }
-    private int Tmp_Keys { get => tmp_Keys; set => tmp_Keys = Mathf.Clamp(value, 0, lvlKeysLimit); }
+    public int Tmp_Money { get => tmp_Money; private set => tmp_Money = Mathf.Clamp(value, 0, lvlMoneyLimit); }
+    public int Tmp_Keys { get => tmp_Keys; private set => tmp_Keys = Mathf.Clamp(value, 0, lvlKeysLimit); }
 
     private int generated_Sum {  get; set; }
 
@@ -64,6 +64,17 @@ public class LevelInventory: ScriptableObject, IResetable
                 return tmp_Keys;
         }
         return 0;
+    }
+
+    public bool RequestPayment(int cost)
+    {
+        if (cost <= tmp_Money)
+        {
+            tmp_Money -= cost;
+            DisplayItems(tmp_Money, ItemType.MONEY);
+            return true;
+        }
+        return false;
     }
 
     public void ResetObject()

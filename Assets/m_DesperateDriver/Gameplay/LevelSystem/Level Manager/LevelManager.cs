@@ -73,6 +73,7 @@ public class LevelManager : SingletonLocal<LevelManager>
 #endif
         if (!editorMode)
         {
+            InitPlayableLevels();
             SelectLevel(LastLevelIndex, true);
         }
     }
