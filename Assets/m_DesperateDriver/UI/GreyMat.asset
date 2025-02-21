@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ebabdd451b49044789853baa5d90b42, type: 3}
-  m_Name: WhiteMat
+  m_Name: GreyMat
   m_EditorClassIdentifier: 
-  title: White
-  bodyMat: {fileID: 2100000, guid: 4afaa452ef080cb498346d3bd5c7c110, type: 2}
-  seamsMat: {fileID: 2100000, guid: 7dbe00169b441e64a9693d2ee7fcea42, type: 2}
-  isUnlock: 0
-  price: 600
-  iconColor: {r: 0.8196079, g: 0.7176471, b: 0.7176471, a: 1}
+  title: Grey
+  bodyMat: {fileID: 2100000, guid: 8c192ac765c72a24a987636d2bab9765, type: 2}
+  seamsMat: {fileID: 2100000, guid: 806b6a6ce7d08c541989afd017077b8e, type: 2}
+  isUnlock: 1
+  price: 0
+  iconColor: {r: 0.3433962, g: 0.33886075, b: 0.33886075, a: 1}

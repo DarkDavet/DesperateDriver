@@ -17,14 +17,14 @@ public class SceneLoader : SingletonGlobal<SceneLoader>
     private IEnumerator LoadAndStartGameplay()
     {
         yield return Load(Scenes.GAMEPLAY);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
     }
 
     private IEnumerator LoadAndStartMainMenu()
     {
         yield return Load(Scenes.MAIN_MENU);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
     }
 

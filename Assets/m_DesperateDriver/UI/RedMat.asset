@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RedMat
   m_EditorClassIdentifier: 
   title: Red
-  material: {fileID: 2100000, guid: 2408c7077c3256541945bfb35ac03ca5, type: 2}
+  bodyMat: {fileID: 2100000, guid: 2408c7077c3256541945bfb35ac03ca5, type: 2}
+  seamsMat: {fileID: 2100000, guid: 3f47f4d644d848c4aa8dce558daa5b85, type: 2}
   isUnlock: 0
   price: 200
   iconColor: {r: 0.78823537, g: 0, b: 0, a: 1}

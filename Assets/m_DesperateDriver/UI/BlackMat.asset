@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BlackMat
   m_EditorClassIdentifier: 
   title: Black
-  material: {fileID: 2100000, guid: a4e6922f48c28e645b166a6e87c82b19, type: 2}
+  bodyMat: {fileID: 2100000, guid: a4e6922f48c28e645b166a6e87c82b19, type: 2}
+  seamsMat: {fileID: 2100000, guid: 022f817192f82864a956f7ccd727ef3d, type: 2}
   isUnlock: 0
   price: 500
   iconColor: {r: 0.14117648, g: 0, b: 0, a: 1}

@@ -4,8 +4,8 @@ using UnityEngine;
 public class CarMaterialSetup : ScriptableObject
 {
     public string title;
-    public Material material;
-    public bool isUnlock;
-    public string price;
+    public Material bodyMat;
+    public Material seamsMat;
+    public int price;
     public Color iconColor;
 }

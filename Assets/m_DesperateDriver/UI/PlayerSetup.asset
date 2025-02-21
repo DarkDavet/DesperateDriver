@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966c491f8e507a84d8e2a11fe0a0b592, type: 3}
+  m_Name: PlayerSetup
+  m_EditorClassIdentifier: 
+  carBodyMaterial: {fileID: 2100000, guid: 8c192ac765c72a24a987636d2bab9765, type: 2}
+  carSeamsMaterial: {fileID: 2100000, guid: 806b6a6ce7d08c541989afd017077b8e, type: 2}

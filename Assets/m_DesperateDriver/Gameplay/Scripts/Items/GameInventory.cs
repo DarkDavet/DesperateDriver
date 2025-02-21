@@ -53,6 +53,7 @@ public class GameInventory: ScriptableObject
         {
             Money -= cost;
             DisplayItems(Money, ItemType.MONEY);
+            Debug.Log($"Money NOW!!!: {Money}");
             StorageManager.Instance.SaveGameInventoryData();
             return true;
         }

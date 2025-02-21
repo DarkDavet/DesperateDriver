@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YellowMat
   m_EditorClassIdentifier: 
   title: Yellow
-  material: {fileID: 2100000, guid: bff761b7e096ac849bedb4d802539ce6, type: 2}
-  isUnlock: 0
+  bodyMat: {fileID: 2100000, guid: bff761b7e096ac849bedb4d802539ce6, type: 2}
+  seamsMat: {fileID: 2100000, guid: 7e00b4046bd2ca5429f90632d734feb9, type: 2}
   price: 300
   iconColor: {r: 0.9176471, g: 0.7803922, b: 0.14117648, a: 1}
