@@ -20,7 +20,7 @@ public class UIStatusStateWidget : MonoBehaviour, IUIWidget, IResetable
     {
         if (slider.value >= 0)
         {
-            slider.value += amount;
+            slider.value = amount;
         }
     }
 

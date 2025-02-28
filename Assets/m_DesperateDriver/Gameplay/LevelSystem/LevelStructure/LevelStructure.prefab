@@ -380,6 +380,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7726234053762127993}
     - target: {fileID: 8807930745861558402, guid: c095a5e7cbd80b340b7d2e5eafbe2859, type: 3}
+      propertyPath: iceCreamTrunk
+      value: 
+      objectReference: {fileID: 11400000, guid: ae76a30f2db0a8046a65bc23da37c16e, type: 2}
+    - target: {fileID: 8807930745861558402, guid: c095a5e7cbd80b340b7d2e5eafbe2859, type: 3}
       propertyPath: uIMoneyWidget
       value: 
       objectReference: {fileID: 5034937096913415392}
@@ -499,6 +503,14 @@ PrefabInstance:
     - target: {fileID: 4382856091279061347, guid: cc00f98496d8f9340b8379dbb4848dbc, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112975405250629950, guid: cc00f98496d8f9340b8379dbb4848dbc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287183527164732041, guid: cc00f98496d8f9340b8379dbb4848dbc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760154774202694874, guid: cc00f98496d8f9340b8379dbb4848dbc, type: 3}
       propertyPath: m_Camera
@@ -845,7 +857,7 @@ PrefabInstance:
     - target: {fileID: 7222100934722988865, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
       propertyPath: carBody
       value: 
-      objectReference: {fileID: 6721111428811408864}
+      objectReference: {fileID: 0}
     - target: {fileID: 7222100934722988865, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
       propertyPath: uiStatusStateWidget
       value: 
@@ -906,11 +918,6 @@ MonoBehaviour:
 --- !u!4 &6707414876371261794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1910254882193715765, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
-  m_PrefabInstance: {fileID: 5158610569084480343}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &6721111428811408864 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1932395839632993975, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
   m_PrefabInstance: {fileID: 5158610569084480343}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8734440519402086096 stripped

@@ -12,6 +12,7 @@ public class ItemsEventStation: MonoBehaviour
     [SerializeField] private GameEventListener m_PickBottleEventListener;
     [SerializeField] private GameEventListener m_PickFuelEventListener;
     [SerializeField] private GameEventListener m_UseGasStationEventListener;
+   
 
     private int genereatedAmount;
     void Start()
@@ -34,7 +35,7 @@ public class ItemsEventStation: MonoBehaviour
 
     private void OnDisable()
     {
-        m_PickMoneyEventListener.Unsubscribe() ;
+        m_PickMoneyEventListener.Unsubscribe();
         m_PickBottleEventListener.Unsubscribe();
         m_PickFuelEventListener.Unsubscribe();
         m_UseGasStationEventListener.Unsubscribe();

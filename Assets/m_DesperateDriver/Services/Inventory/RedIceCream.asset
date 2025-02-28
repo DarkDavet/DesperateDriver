@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc68e5c0ff4bec4a98d5e107a707298, type: 3}
+  m_Name: RedIceCream
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7933008966724052503, guid: 0722eec083bf4a7499741ac3f2d33cb5, type: 3}
+  type: 0
+  expiryTime: 0

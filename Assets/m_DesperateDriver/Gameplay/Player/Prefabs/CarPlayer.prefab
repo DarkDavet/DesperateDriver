@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 7222100934722988865}
   - component: {fileID: 8328483622625699394}
   - component: {fileID: 8567191472067054921}
+  - component: {fileID: 2703921325591146886}
   m_Layer: 0
   m_Name: CarPlayer
   m_TagString: Player
@@ -786,6 +787,19 @@ MonoBehaviour:
   playerSetup: {fileID: 11400000, guid: b5211ac06c67f744d9f4a98bd32fa9d9, type: 2}
   carBody: {fileID: 7290415958709494129}
   carSeams: {fileID: 1933975738888393453}
+--- !u!114 &2703921325591146886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910254882777235094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d1a8c78ea2ac747b361fbbd9455345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trunk: {fileID: 11400000, guid: ae76a30f2db0a8046a65bc23da37c16e, type: 2}
 --- !u!1 &1910254882826532422
 GameObject:
   m_ObjectHideFlags: 0

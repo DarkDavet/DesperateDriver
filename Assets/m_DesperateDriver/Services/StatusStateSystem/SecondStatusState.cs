@@ -6,38 +6,40 @@ public class SecondStatusState : StatusState
 
     private StatusSet _statusSet;
     private UIStatusStateWidget _uiStatusStateWidget;
-    private LevelInventory _levelInventory;
-    private MeshRenderer _carBody;
+    private ItemTimer _timer;
+    private ItemValue _value;
 
-    public SecondStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, MeshRenderer carBody, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory) : base(statusStateController)
+
+    public SecondStatusState(PlayerStatusStateController statusStateController, StatusSet statusSet, UIStatusStateWidget uiStatusStateWidget, ItemTimer timer, ItemValue value) : base(statusStateController)
     {
         _statusStateController = statusStateController;
 
         _statusSet = statusSet;
         _uiStatusStateWidget = uiStatusStateWidget;
-        _levelInventory = levelInventory;
-        _carBody = carBody;
+        _timer = timer;
+        _value = value;
     }
 
     public override void Enter()
     {
         //_statusSet.carMaterial.SetActive(true);
         _uiStatusStateWidget.SetStatusStateSettings(_statusSet.uiColor, _statusSet.statusName);
-        _carBody.material = _statusSet.carMaterial;
+        _value.Value = _statusSet.value;
         //_statusAnimator.SetTrigger(_statusSet.tagAnimTrigger);
         // change color hud method to UIPlayerManager
     }
 
     public override void Update()
     {
-        if (_levelInventory.CheckItemsAmount(ItemType.MONEY) > _statusSet.moneyMaxLimit)
+        if (_timer.Timer < _statusSet.amountMinLimit)
         {
             _statusStateController.SetState<ThirdStatusState>();
         }
-        if (_levelInventory.CheckItemsAmount(ItemType.MONEY) < _statusSet.moneyMinLimit)
+        if (_timer.Timer > _statusSet.amountMaxLimit)
         {
             _statusStateController.SetState<FirstStatusState>();
         }
+        _uiStatusStateWidget.UpdateWidget(_timer.Timer);
     }
 
     public override void Exit()

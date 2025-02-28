@@ -6,9 +6,9 @@ using UnityEngine;
 public class StatusStateContext : MonoBehaviour
 {
     [SerializeField] private List<StatusSet> _statusSets = new List<StatusSet>();
-    [SerializeField] private MeshRenderer carBody;
     [SerializeField] private UIStatusStateWidget uiStatusStateWidget;
-    [SerializeField] private LevelInventory levelInventory;
+    [SerializeField] private ItemTimer _timer;
+    [SerializeField] private ItemValue _value;
     
     private PlayerStatusStateController statusStateController;
 
@@ -16,9 +16,9 @@ public class StatusStateContext : MonoBehaviour
     {
         statusStateController = new PlayerStatusStateController();
 
-        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Poor"), carBody, uiStatusStateWidget, levelInventory));
-        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Middle"), carBody, uiStatusStateWidget, levelInventory));
-        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Rich"), carBody, uiStatusStateWidget, levelInventory));
+        statusStateController.AddState(new FirstStatusState(statusStateController, GetStatusSet("Fresh"), uiStatusStateWidget, _timer, _value));
+        statusStateController.AddState(new SecondStatusState(statusStateController, GetStatusSet("Well"), uiStatusStateWidget, _timer, _value));
+        statusStateController.AddState(new ThirdStatusState(statusStateController, GetStatusSet("Bad"), uiStatusStateWidget, _timer, _value));
 
         statusStateController.SetState<FirstStatusState>();
     }

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem.HID;
 public class WinLoseEventStation: MonoBehaviour
 {
     [SerializeField] private LevelInventory levelInventory;
+    [SerializeField] private InventoryObject iceCreamTrunk;
     [SerializeField] private UIMoneyWidget uIMoneyWidget;
     [SerializeField] private UIPlayerManager uIPlayerManager;
     [SerializeField] private GameEventListener m_WinEventListener;
@@ -47,6 +48,7 @@ public class WinLoseEventStation: MonoBehaviour
     public void OnWin()
     {
         levelManager.NextLevel();
+        iceCreamTrunk.Clear();
         Debug.Log("NextLevel called from WinLoseEventStation.");
         inventoryBroker.TransferInventoryData();
         storageManager.SaveGameInventoryData();
@@ -55,6 +57,7 @@ public class WinLoseEventStation: MonoBehaviour
     public void OnLose()
     {
         levelManager.RestartLevel();
+        iceCreamTrunk.Clear();
         //ResetLevel();
     }
 

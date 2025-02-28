@@ -10,17 +10,18 @@ public class Speedometer : MonoBehaviour
     [SerializeField] private float maxSpeed;
 
     private float currentSpeed;
+    public float CurrentSpeed { get => currentSpeed; private set { currentSpeed = value; } }
 
     private void Start()
     {
-        currentSpeed = maxSpeed;
-        speedBar.SetupBar(currentSpeed);
+        CurrentSpeed = maxSpeed;
+        speedBar.SetupBar(CurrentSpeed);
         
     }
     public float CalculateSpeed(float speed)
     {
-        currentSpeed = speed * 3.6f;
-        speedBar.UpdateBar(currentSpeed);
-        return currentSpeed;
+        CurrentSpeed = speed * 3.6f;
+        speedBar.UpdateBar(CurrentSpeed);
+        return CurrentSpeed;
     }
 }
