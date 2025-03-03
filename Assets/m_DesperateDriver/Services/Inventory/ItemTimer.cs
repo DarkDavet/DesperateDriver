@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,11 +7,13 @@ public class ItemTimer : MonoBehaviour
 {
     [SerializeField] private ItemValue itemValue;
     private int timer;
-    public int Timer { get { return timer; } private set => timer = value; }
+    private int duration;
+    public int Timer { get { return timer; } private set => timer = Mathf.Clamp(value, 0, duration + 1); }
     [NonSerialized] public UnityEvent OnTimerEnded = new UnityEvent();
 
     public void SetupTimer(int duration)
     {
+        this.duration = duration;
         Timer = duration;
         StartCoroutine(TimerCoroutine());
     }
@@ -34,5 +36,15 @@ public class ItemTimer : MonoBehaviour
         itemValue.Value = 0;
         OnTimerEnded.Invoke();
         Debug.Log("Timer ended!");
+    }
+
+    public void DecreaseTimer(int duration)
+    {
+        Timer -= duration;
+    }
+
+    public void IncreaseTimer(int duration)
+    {
+        Timer += duration;
     }
 }
