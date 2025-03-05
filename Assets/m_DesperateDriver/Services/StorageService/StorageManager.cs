@@ -6,6 +6,7 @@ using UnityEngine;
 public class StorageManager : SingletonGlobal<StorageManager>
 {
     [SerializeField] private GameInventory gameInventory;
+   // [SerializeField] private UpgradeData upgradeData;
 
     private IStorageService storageService;
 
@@ -13,8 +14,9 @@ public class StorageManager : SingletonGlobal<StorageManager>
     private const string KEY_LEVEL_STACKS = "Level Stacks";
     private const string KEY_CAR_COLORS = "Car Colors";
     private const string KEY_CAR_MATERIAL = "Car Material";
+    private const string KEY_CAR_UPGRADES = "Car Upgrades";
 
-    private void Start()
+    public void InitStorageManager()
     {
         storageService = new JsonToFileStorageService();
         LoadGameInventoryData();
@@ -50,6 +52,39 @@ public class StorageManager : SingletonGlobal<StorageManager>
             else
             {
                 Debug.LogError("Failed to load inventory.");
+            }
+        });
+    }
+    public void SaveUpgradeData(UpgradeData upgradeData)
+    {
+        var data = upgradeData.PackUpgradeData();
+        storageService.Save(KEY_CAR_UPGRADES, data, success =>
+        {
+            if (success)
+            {
+                Debug.Log("Upgrade levels saved successfully!");
+            }
+            else
+            {
+                Debug.LogError("Failed to save upgrade levels.");
+
+            }
+        });
+    }
+
+    public void LoadUpgradeData(UpgradeData upgradeData)
+    {
+        storageService.Load<UpgradeDataData>(KEY_CAR_UPGRADES, data =>
+        {
+            if (data != null)
+            {
+                upgradeData.UnpackUpgradeData(data);
+                Debug.Log("Upgrade levels loaded successfully.");
+
+            }
+            else
+            {
+                Debug.LogError("Failed to load upgrade levels.");
             }
         });
     }

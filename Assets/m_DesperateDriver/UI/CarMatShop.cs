@@ -12,7 +12,7 @@ public class CarMatShop : SingletonLocal<CarMatShop>
 
     private string matNameCurrent;
 
-    private void Start()
+    public void InitShop()
     {
         StorageManager.Instance.LoadCarColorsData(matGoods);
         StorageManager.Instance.LoadCarMaterialData(Instance);

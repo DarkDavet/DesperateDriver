@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryDisplay : MonoBehaviour
 {
+    [SerializeField] private UpgradeSetup upgradeSetup;
     public InventoryObject inventory;
     public int MAX_SLOTS = 3;
     public int X_START;
@@ -20,6 +21,24 @@ public class InventoryDisplay : MonoBehaviour
     void Start()
     {
         inventory.OnInventoryChanged += UpdateDisplay;
+
+        if (upgradeSetup != null)
+        {
+            if (upgradeSetup.capacity > 0)
+            {
+                MAX_SLOTS = upgradeSetup.capacity;
+                inventory.MAX_SLOTS = upgradeSetup.capacity;
+            }
+            else
+            {
+                Debug.LogError("UpgradeSetup capacity must be greater than zero.");
+            }
+        }
+        else
+        {
+            Debug.LogError("UpgradeSetup is not assigned.");
+
+        }
     }
 
     void OnDestroy()

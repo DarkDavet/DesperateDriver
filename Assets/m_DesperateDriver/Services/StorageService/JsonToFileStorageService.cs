@@ -22,6 +22,13 @@ public class JsonToFileStorageService : IStorageService
     {
         string path = BuildPath(key);
 
+        if (!File.Exists(path))
+        {
+            // If the file does not exist, call the callback with default value
+            callback?.Invoke(default(T));
+            return;
+        }
+
         using (var filestream = new StreamReader(path))
         {
             var json = filestream.ReadToEnd();

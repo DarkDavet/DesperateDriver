@@ -6,8 +6,9 @@ public class FuelTank : MonoBehaviour
 {
     [SerializeField] private SliderController fuelBar;
     [SerializeField] private GameEvent m_LoseEvent;
+    [SerializeField] private UpgradeSetup upgradeSetup;
 
-    [SerializeField] private float maxFuel;
+   
 
     [Range(0f, 1f)]
     [SerializeField] private float consuptionFuelActive = 0.3f;
@@ -15,15 +16,32 @@ public class FuelTank : MonoBehaviour
     [SerializeField] private float consuptionFuelPassive = 0.03f;
 
     private float currentFuel;
-    public float MaxFuel { get => maxFuel; }
+    private float maxFuel;
+    public float MaxFuel { get => maxFuel; private set => maxFuel = Mathf.Clamp(value, 0, 100); }
     public float CurrentFuel { get => currentFuel; private set => currentFuel = Mathf.Clamp(value, 0, maxFuel); }
 
     private float consupDistance = 0;
 
     private void Start()
     {
-        CurrentFuel = MaxFuel;
-        fuelBar.SetupBar(CurrentFuel);
+        if (upgradeSetup != null)
+        {
+            if (upgradeSetup.capacity > 0)
+            {
+                maxFuel = upgradeSetup.capacity;
+                CurrentFuel = maxFuel;
+                fuelBar.SetupBar(CurrentFuel);
+            }
+            else
+            {
+                Debug.LogError("UpgradeSetup capacity must be greater than zero.");
+            }
+        }
+        else
+        {
+            Debug.LogError("UpgradeSetup is not assigned.");
+
+        }
     }
 
     public float DecreaseFuelLevel(float distance)
@@ -52,5 +70,10 @@ public class FuelTank : MonoBehaviour
             fuelBar.UpdateBar(CurrentFuel);
         }
         return CurrentFuel;
+    }
+
+    public void Upgrade(int capacity)
+    {
+        MaxFuel = capacity;
     }
 }

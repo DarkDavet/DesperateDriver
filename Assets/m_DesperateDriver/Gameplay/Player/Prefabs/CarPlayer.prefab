@@ -481,7 +481,6 @@ GameObject:
   - component: {fileID: 1910254882777235086}
   - component: {fileID: 1910254882777235085}
   - component: {fileID: 7422027141846138488}
-  - component: {fileID: 7222100934722988865}
   - component: {fileID: 8328483622625699394}
   - component: {fileID: 8567191472067054921}
   - component: {fileID: 2703921325591146886}
@@ -643,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelBar: {fileID: 0}
   m_LoseEvent: {fileID: 11400000, guid: 9eecb218549390042bfe281ca699d3e9, type: 2}
-  maxFuel: 30
+  upgradeSetup: {fileID: 11400000, guid: 252db27a059b3094abb832d1118bd609, type: 2}
   consuptionFuelActive: 1
   consuptionFuelPassive: 0.346
 --- !u!114 &1910254882777235086
@@ -716,40 +715,6 @@ MonoBehaviour:
   steer: 6
   lit: 0
   brake: 0
---- !u!114 &7222100934722988865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910254882777235094}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4090ed3341efbc4581129c7c1078367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _statusSets:
-  - statusName: Poor
-    carMaterial: {fileID: 2100000, guid: 2408c7077c3256541945bfb35ac03ca5, type: 2}
-    uiColor: {r: 0.7207546, g: 0.22710566, b: 0.22710566, a: 0}
-    tagAnimTrigger: 
-    moneyMinLimit: 0
-    moneyMaxLimit: 70
-  - statusName: Middle
-    carMaterial: {fileID: 2100000, guid: bff761b7e096ac849bedb4d802539ce6, type: 2}
-    uiColor: {r: 0.8039216, g: 0.63075274, b: 0.2235294, a: 0}
-    tagAnimTrigger: 
-    moneyMinLimit: 71
-    moneyMaxLimit: 140
-  - statusName: Rich
-    carMaterial: {fileID: 2100000, guid: 707eb7b790aaa214bb421203de68536d, type: 2}
-    uiColor: {r: 0.15922391, g: 0.78867924, b: 0.7359301, a: 0}
-    tagAnimTrigger: 
-    moneyMinLimit: 141
-    moneyMaxLimit: 200
-  carBody: {fileID: 3568770543721349216, guid: d62516fef5a674844977e8e53e6d299a, type: 3}
-  uiStatusStateWidget: {fileID: 8607833368170827401}
-  levelInventory: {fileID: 11400000, guid: dde887e15df7c37408546e00a92a5cfb, type: 2}
 --- !u!64 &8328483622625699394
 MeshCollider:
   m_ObjectHideFlags: 0
