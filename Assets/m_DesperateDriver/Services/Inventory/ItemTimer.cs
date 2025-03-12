@@ -26,7 +26,7 @@ public class ItemTimer : MonoBehaviour
             Timer--; 
             if (Timer <= 0)
             {
-                TimerEnded();
+                 TimerEnded();
             }
         }
     }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusStateContext : MonoBehaviour
+public class ExpireStatusStateContext : MonoBehaviour
 {
     [SerializeField] private List<StatusSet> _statusSets = new List<StatusSet>();
     [SerializeField] private UIStatusStateWidget uiStatusStateWidget;

@@ -4,6 +4,7 @@ public class UIGameInventoryWidget : MonoBehaviour
 {
     [SerializeField] private GameInventory gameInventory;
     [SerializeField] private UIMoneyWidget uiMoneyWidget;
+    [SerializeField] private UIStarsWidget uiStarsWidget;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class UIGameInventoryWidget : MonoBehaviour
                 uiMoneyWidget.UpdateWidget(amount);
                 break;
             case ItemType.KEY:
-                Debug.Log("Key has added");
+                uiStarsWidget.UpdateWidget(amount);
                 break;
         }
     }

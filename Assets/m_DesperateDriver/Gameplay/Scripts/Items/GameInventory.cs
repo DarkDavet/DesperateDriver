@@ -9,13 +9,14 @@ public class GameInventory: ScriptableObject
     public event Action<int, string> OnInventoryChanged;
 
     [ReadOnly, SerializeField] private int money;
-    [ReadOnly, SerializeField] private int keys;
+    [ReadOnly, SerializeField] private int stars;
     private int Money { get => money; set => money = Mathf.Clamp(value, 0, 1000000); }
-    private int Keys { get => keys; set => keys = Mathf.Clamp(value, 0, 100); }
+    private int Stars { get => stars; set => stars = Mathf.Clamp(value, 0, 100); }
 
     public void Initialize()
     {
         DisplayItems(Money, ItemType.MONEY);
+        DisplayItems(Stars, ItemType.KEY);
     }
 
     public void UpdateGameInventory(int amount, string itemType)
@@ -26,20 +27,25 @@ public class GameInventory: ScriptableObject
                 Money += amount;
                 break;
             case ItemType.KEY:
-                Keys += amount;
+                Stars += amount;
                 break;
         }
     }
 
     public GameInventoryData PackGameInventoryData()
     {
-        return new GameInventoryData { Money = this.Money, Keys = this.Keys };
+        var data = new GameInventoryData()
+        {
+            Money = this.Money,
+            Stars = this.Stars
+        };
+        return data;
     }
 
     public void UnpackGameInventoryData(GameInventoryData data)
     {
         Money = data.Money;
-        Keys = data.Keys;
+        Stars = data.Stars;
     }
 
     private void DisplayItems(int amount, string itemType)
@@ -47,15 +53,30 @@ public class GameInventory: ScriptableObject
         OnInventoryChanged?.Invoke(amount, itemType);
     }
 
-    public bool RequestPayment(int cost)
+    public bool RequestPayment(int cost, string itemType)
     {
-        if (cost <= Money)
+        switch (itemType)
         {
-            Money -= cost;
-            DisplayItems(Money, ItemType.MONEY);
-            Debug.Log($"Money NOW!!!: {Money}");
-            StorageManager.Instance.SaveGameInventoryData();
-            return true;
+            case ItemType.MONEY:
+                if (cost <= Money)
+                {
+                    Money -= cost;
+                    DisplayItems(Money, ItemType.MONEY);
+                    Debug.Log($"Money NOW!!!: {Money}");
+                    StorageManager.Instance.SaveGameInventoryData();
+                    return true;
+                }
+                break;
+            case ItemType.KEY:
+                if (cost <= Stars)
+                {
+                    Stars -= cost;
+                    DisplayItems(Stars, ItemType.KEY);
+                    Debug.Log($"Keys NOW!!!: {Stars}");
+                    StorageManager.Instance.SaveGameInventoryData();
+                    return true;
+                }
+                break;
         }
         return false;
     }
@@ -65,5 +86,5 @@ public class GameInventory: ScriptableObject
 public class GameInventoryData
 {
     public int Money;
-    public int Keys;
+    public int Stars;
 }

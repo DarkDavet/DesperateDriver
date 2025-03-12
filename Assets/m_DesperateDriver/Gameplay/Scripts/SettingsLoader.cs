@@ -8,7 +8,7 @@ public class SettingsLoader : MonoBehaviour
 
     private List<Level> lvlsList;
 
-    private void Start()
+    public void Init()
     {
         lvlsList = levelsList.lvls;
     }

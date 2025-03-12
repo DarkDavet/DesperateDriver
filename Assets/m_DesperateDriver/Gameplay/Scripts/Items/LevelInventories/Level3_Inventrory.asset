@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2e7f5a82f22650498d1d6236099e90c, type: 3}
-  m_Name: Level1_Inventrory
+  m_Name: Level3_Inventrory
   m_EditorClassIdentifier: 
-  lvlMoneyLimit: 200
-  lvlKeysLimit: 3
-  tmp_Money: 132
-  tmp_Keys: 0
+  id: 3
+  lvlMoneyLimit: 300
+  lvlStarsLimit: 3
+  tmp_Money: 200
+  glb_Money: 0
+  firstLimit: 100
+  secondLimit: 180
+  thirdLimit: 260
+  tmp_Stars: 0
+  glb_Stars: 0
+  isFullCompleted: 0

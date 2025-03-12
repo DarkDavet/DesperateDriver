@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 8328483622625699394}
   - component: {fileID: 8567191472067054921}
   - component: {fileID: 2703921325591146886}
+  - component: {fileID: 4820613005285641918}
   m_Layer: 0
   m_Name: CarPlayer
   m_TagString: Player
@@ -765,6 +766,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trunk: {fileID: 11400000, guid: ae76a30f2db0a8046a65bc23da37c16e, type: 2}
+--- !u!114 &4820613005285641918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910254882777235094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf35e6bdf0d05148bf7f42e7bcde881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repSets:
+  - statusName: Looser
+    uiColor: {r: 0.5924529, g: 0.16432182, b: 0.17349832, a: 1}
+  - statusName: Nobody
+    uiColor: {r: 0.5018867, g: 0.28927198, b: 0.19601989, a: 1}
+  - statusName: Beginner
+    uiColor: {r: 0.85660374, g: 0.5838336, b: 0.25698105, a: 1}
+  - statusName: Expierenced
+    uiColor: {r: 0.48450208, g: 0.7056604, b: 0.35549307, a: 1}
+  - statusName: Pro
+    uiColor: {r: 0.26039866, g: 0.82641506, b: 0.6684695, a: 1}
+  - statusName: Ace
+    uiColor: {r: 0.75242096, g: 0.347718, b: 0.82641506, a: 1}
+  uiStatusStateWidget: {fileID: 8607833368170827401}
+  levelInventory: {fileID: 0}
 --- !u!1 &1910254882826532422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1523,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1721198539269207489, guid: 59b5d52d2c68cc248af3ad7844acb5ef, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1957389818769945394, guid: 59b5d52d2c68cc248af3ad7844acb5ef, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1511,11 +1539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3321065193084326013, guid: 59b5d52d2c68cc248af3ad7844acb5ef, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8111117064142581181, guid: 59b5d52d2c68cc248af3ad7844acb5ef, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8354666526634961534, guid: 59b5d52d2c68cc248af3ad7844acb5ef, type: 3}
       propertyPath: m_Name

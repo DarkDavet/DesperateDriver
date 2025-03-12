@@ -15,14 +15,12 @@ public class ItemsEventStation: MonoBehaviour
    
 
     private int genereatedAmount;
-    void Start()
+    public void Initialize()
     {
         m_PickMoneyEventListener.EventHandler = OnMoneyPick;
         m_PickBottleEventListener.EventHandler = OnBottlePick;
         m_PickFuelEventListener.EventHandler = OnFuelPick;
         m_UseGasStationEventListener.EventHandler = OnGasStationUse;
-
-        levelInventory.Initialize();
     }
 
     private void OnEnable()

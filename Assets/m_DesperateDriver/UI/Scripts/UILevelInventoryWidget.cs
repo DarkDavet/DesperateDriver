@@ -6,8 +6,9 @@ public class UILevelInventoryWidget: MonoBehaviour
 {
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private UIMoneyWidget uiMoneyWidget;
+    [SerializeField] private UIStarsWidget uiStarsWidget;
 
-    private void Start()
+    public void Init()
     {
         levelInventory.OnInventoryChanged += Display;
     }
@@ -23,7 +24,7 @@ public class UILevelInventoryWidget: MonoBehaviour
                 uiMoneyWidget.UpdateWidget(amount);
                 break;
             case ItemType.KEY:
-                Debug.Log("Key has added");
+                uiStarsWidget.UpdateWidget(amount); 
                 break;
         }
     }

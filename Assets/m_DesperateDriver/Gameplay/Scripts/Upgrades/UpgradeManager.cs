@@ -54,7 +54,7 @@ public class UpgradeManager : MonoBehaviour
         int tmpCurrentUpgradeLevel = currentUpgradeLevel + 1;
         if (upgradeDictionary.FuelCapacityUpgrades.ContainsKey(tmpCurrentUpgradeLevel) && upgradeDictionary.FuelUpgradesCosts.ContainsKey(tmpCurrentUpgradeLevel))
         {
-            if (gameInventory.RequestPayment(upgradeDictionary.FuelUpgradesCosts[tmpCurrentUpgradeLevel]))
+            if (gameInventory.RequestPayment(upgradeDictionary.FuelUpgradesCosts[tmpCurrentUpgradeLevel], ItemType.MONEY))
             {
                 currentUpgradeLevel = tmpCurrentUpgradeLevel;
                 SetUpgradeSetup();

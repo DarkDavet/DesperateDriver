@@ -9,7 +9,7 @@ public class TransactionService : MonoBehaviour
 
     private Product purchasedProduct;
 
-    private void Start()
+    public void InitService()
     {
         StorageManager.Instance.LoadGoodsData(goods);
         foreach (var item in goods)
@@ -65,7 +65,7 @@ public class TransactionService : MonoBehaviour
 
     private bool PurchaseProcess()
     {
-        if (purchasedProduct != null && gameInventory.RequestPayment(purchasedProduct.cost))
+        if (purchasedProduct != null && gameInventory.RequestPayment(purchasedProduct.cost, ItemType.KEY))
         {
             return true;
         }

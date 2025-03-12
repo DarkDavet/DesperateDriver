@@ -12,19 +12,36 @@ public class StorageManager : SingletonGlobal<StorageManager>
 
     private const string KEY_GAME_INVENTORY = "Game Inventory";
     private const string KEY_LEVEL_STACKS = "Level Stacks";
+    private const string KEY_LEVEL_ITEMS = "Level Money";
     private const string KEY_CAR_COLORS = "Car Colors";
     private const string KEY_CAR_MATERIAL = "Car Material";
     private const string KEY_CAR_UPGRADES = "Car Upgrades";
 
     public void InitStorageManager()
     {
-        storageService = new JsonToFileStorageService();
+        if (storageService == null)
+        {
+            storageService = new JsonToFileStorageService();
+        }
         LoadGameInventoryData();
     }
 
     public void SaveGameInventoryData()
     {
+        if (gameInventory == null)
+        {
+            Debug.LogError("gameInventory is null. Cannot save game inventory data.");
+            return;
+        }
+
         var data = gameInventory.PackGameInventoryData();
+
+        if (storageService == null)
+        {
+            Debug.LogError("storageService is null. Cannot save game inventory data.");
+            return;
+        }
+
         storageService.Save(KEY_GAME_INVENTORY, data, success =>
         {
             if (success)
@@ -34,7 +51,6 @@ public class StorageManager : SingletonGlobal<StorageManager>
             else
             {
                 Debug.LogError("Failed to save inventory.");
-
             }
         });
     }
@@ -85,6 +101,40 @@ public class StorageManager : SingletonGlobal<StorageManager>
             else
             {
                 Debug.LogError("Failed to load upgrade levels.");
+            }
+        });
+    }
+
+    public void SaveLevelItemsData(LevelInventoryData inventoryData)
+    {
+        var data = inventoryData.PackLevelInventoryData();
+        storageService.Save(KEY_LEVEL_ITEMS, data, success =>
+        {
+            if (success)
+            {
+                Debug.Log("Level items saved successfully!");
+            }
+            else
+            {
+                Debug.LogError("Failed to save level items.");
+
+            }
+        });
+    }
+
+    public void LoadLevelItemsData(LevelInventoryData inventoryData)
+    {
+        storageService.Load<LevelInventorySaveData>(KEY_LEVEL_ITEMS, data =>
+        {
+            if (data != null)
+            {
+                inventoryData.UnpackLevelInventoryData(data);
+                Debug.Log("Level items loaded successfully.");
+
+            }
+            else
+            {
+                Debug.LogError("Failed to load level items.");
             }
         });
     }

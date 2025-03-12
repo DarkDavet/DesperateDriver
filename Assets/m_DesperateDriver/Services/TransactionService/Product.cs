@@ -28,17 +28,17 @@ public class Product : MonoBehaviour
         isActive = false;
         cost = 0;
         unlockButton.interactable = false;
-        icon.color = Color.green;
+        //icon.color = Color.green;
         costTitle.text = string.Empty;
         foreach (var button in dependableButtons)
         {
             button.interactable = true;
-            Color newColor;
+            /*Color newColor;
 
             if (UnityEngine.ColorUtility.TryParseHtmlString("#AFF2A5", out newColor))
             {
                 button.image.color = newColor;
-            }
+            }*/
         }
 
         foreach(var level in unlockableLevels)
@@ -52,6 +52,10 @@ public class Product : MonoBehaviour
         foreach (var level in unlockableLevels)
         {
             level.isPlayable = false;
+        }
+        foreach (var button in dependableButtons)
+        {
+            button.interactable = false;
         }
     }
 

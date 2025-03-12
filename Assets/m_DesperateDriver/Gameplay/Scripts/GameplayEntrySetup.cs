@@ -6,6 +6,7 @@ public class GameplayEntrySetup : MonoBehaviour
     private void Start()
     {
         LevelInit();
+        PoolManager.Instance.Init(); 
     }
 
     private void LevelInit()

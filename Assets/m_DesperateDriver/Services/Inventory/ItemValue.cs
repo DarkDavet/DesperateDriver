@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class ItemValue : MonoBehaviour
 {
-    [SerializeField] private LevelInventory inventory;
     public int Value { get; set; }
+
+    private LevelInventoryBroker broker;
+
+    private void Start()
+    {
+        broker = FindAnyObjectByType<LevelInventoryBroker>();
+    }
 
     private void OnDestroy()
     {
         if (Value != 0)
         {
-            inventory.CollectItems(Value, ItemType.MONEY);
+            broker.TransferCollectProcess(Value, ItemType.MONEY);
         }
     }
 }

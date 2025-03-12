@@ -33,7 +33,7 @@ public class CarMatShop : SingletonLocal<CarMatShop>
     {
         if (activeProduct != null)
         {
-            if (!activeProduct.IsPurchased && gameInventory.RequestPayment(activeProduct.Price))
+            if (!activeProduct.IsPurchased && gameInventory.RequestPayment(activeProduct.Price, ItemType.MONEY))
             {
                 activeProduct.UnlockConcreteProduct();
                 StorageManager.Instance.SaveCarColorsData(matGoods);

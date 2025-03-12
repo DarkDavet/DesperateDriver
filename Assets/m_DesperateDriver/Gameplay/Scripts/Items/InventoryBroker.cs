@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class InventoryBroker : MonoBehaviour
 {
-    [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private GameInventory gameInventory;
 
-    public void TransferInventoryData()
+    public void TransferInventoryData(LevelInventory levelInventory)
     {
-        int transferedMoney = levelInventory.CheckItemsAmount(ItemType.MONEY);
-        int transferedKeys = levelInventory.CheckItemsAmount(ItemType.KEY);
-
+        int transferedMoney = levelInventory.GetProfit(ItemType.MONEY);
+        int transferedStars = levelInventory.GetProfit(ItemType.KEY);
         gameInventory.UpdateGameInventory(transferedMoney, ItemType.MONEY);
-        gameInventory.UpdateGameInventory(transferedKeys, ItemType.KEY);
+        gameInventory.UpdateGameInventory(transferedStars, ItemType.KEY);
     }
 }

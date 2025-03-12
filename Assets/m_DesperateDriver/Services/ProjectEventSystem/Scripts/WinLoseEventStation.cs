@@ -8,8 +8,6 @@ public class WinLoseEventStation: MonoBehaviour
 {
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private InventoryObject iceCreamTrunk;
-    [SerializeField] private UIMoneyWidget uIMoneyWidget;
-    [SerializeField] private UIPlayerManager uIPlayerManager;
     [SerializeField] private GameEventListener m_WinEventListener;
     [SerializeField] private GameEventListener m_LoseEventListener;
 
@@ -20,7 +18,7 @@ public class WinLoseEventStation: MonoBehaviour
     private MonoBehaviour[] sceneObjects;
     private List<IResetable> resetableCollection = new();
 
-    void Start()
+    public void Initialize()
     {
         m_WinEventListener.EventHandler = OnWin;
         m_LoseEventListener.EventHandler = OnLose;
@@ -47,11 +45,13 @@ public class WinLoseEventStation: MonoBehaviour
 
     public void OnWin()
     {
-        levelManager.NextLevel();
         iceCreamTrunk.Clear();
         Debug.Log("NextLevel called from WinLoseEventStation.");
-        inventoryBroker.TransferInventoryData();
+        inventoryBroker.TransferInventoryData(levelInventory);
         storageManager.SaveGameInventoryData();
+        levelInventory.SetGlobalData();
+
+        levelManager.NextLevel();   
     }
 
     public void OnLose()
