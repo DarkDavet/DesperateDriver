@@ -6,12 +6,19 @@ using UnityEngine.InputSystem.HID;
 
 public class WinLoseEventStation: MonoBehaviour
 {
+    [SerializeField] private List<GameObject> _hideObjects;
+
+    [SerializeField] private UIWindowLvlResults resultWindow;
+    [SerializeField] private UIMonologWindow monologWindow;
+
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private InventoryObject iceCreamTrunk;
     [SerializeField] private GameEventListener m_WinEventListener;
-    [SerializeField] private GameEventListener m_LoseEventListener;
 
-    private StorageManager storageManager;
+    [SerializeField] private GameEventListener m_LoseFuelEventListener;
+    [SerializeField] private GameEventListener m_LoseMoneyEventListener;
+    [SerializeField] private GameEventListener m_LoseObstalceEventListener;
+
     private InventoryBroker inventoryBroker;
     private LevelManager levelManager;
 
@@ -21,9 +28,11 @@ public class WinLoseEventStation: MonoBehaviour
     public void Initialize()
     {
         m_WinEventListener.EventHandler = OnWin;
-        m_LoseEventListener.EventHandler = OnLose;
 
-        storageManager = FindAnyObjectByType<StorageManager>();
+        m_LoseFuelEventListener.EventHandler = OnFuelLose;
+        m_LoseMoneyEventListener.EventHandler = OnMoneyLose;
+        m_LoseObstalceEventListener.EventHandler = OnObstacleLose;
+
         inventoryBroker = FindAnyObjectByType<InventoryBroker>();
         levelManager = FindAnyObjectByType<LevelManager>();
 
@@ -34,31 +43,110 @@ public class WinLoseEventStation: MonoBehaviour
     private void OnEnable()
     {
         m_WinEventListener.Subscribe();
-        m_LoseEventListener.Subscribe();
+
+        m_LoseFuelEventListener.Subscribe(); 
+        m_LoseMoneyEventListener.Subscribe();
+        m_LoseObstalceEventListener.Subscribe();
     }
 
     private void OnDisable()
     {
         m_WinEventListener.Unsubscribe();
-        m_LoseEventListener.Unsubscribe();
+
+        m_LoseFuelEventListener.Unsubscribe();
+        m_LoseMoneyEventListener.Unsubscribe();
+        m_LoseObstalceEventListener.Unsubscribe();
     }
 
     public void OnWin()
     {
+        Time.timeScale = 0f;
         iceCreamTrunk.Clear();
-        Debug.Log("NextLevel called from WinLoseEventStation.");
         inventoryBroker.TransferInventoryData(levelInventory);
-        storageManager.SaveGameInventoryData();
+        StorageManager.Instance.SaveGameInventoryData();
         levelInventory.SetGlobalData();
+        HideObjects();
+        
+        resultWindow.SetupWindow(
+            levelInventory,
+            inventoryBroker,
+            () => OnNextlevel(), 
+            () => OnLevelExit(),
+            () => OnRestartlevel()
+        );
+       
+    }
 
-        levelManager.NextLevel();   
+    private void OnRestartlevel()
+    {
+        UnityEngine.Debug.Log($"Time.timeScale before restarting: {Time.timeScale}");
+        Time.timeScale = 1f;
+        levelManager.RestartLevel();
+        iceCreamTrunk.Clear();
+        levelInventory.ResetObject();
+        Debug.Log($"Time.timeScale after restarting: {Time.timeScale}");
+    }
+
+    private void OnNextlevel()
+    {
+        levelInventory.ResetObject();
+        Time.timeScale = 1f;
+        levelManager.NextLevel();
+    }
+
+    private void OnLevelExit()
+    {
+        Time.timeScale = 1f;
+        SceneLoader.Instance.LoadMainMenuScene();
+    }
+
+    private void HideObjects()
+    {
+        foreach ( var obj in _hideObjects )
+        {
+            obj.SetActive(false);
+        }
     }
 
     public void OnLose()
     {
-        levelManager.RestartLevel();
-        iceCreamTrunk.Clear();
-        //ResetLevel();
+        OnRestartlevel();
+    }
+
+    public void OnFuelLose()
+    {
+        Debug.Log("Fuel Lose");
+        HideObjects();
+        Time.timeScale = 0f;
+        monologWindow.SetupWindow(
+            "Your fuel level is empty :(",
+            "Restart",
+            () => OnLose()
+            );
+    }
+
+    public void OnMoneyLose()
+    {
+        Debug.Log("Money Lose");
+        HideObjects();
+        Time.timeScale = 0f;
+        monologWindow.SetupWindow(
+            "You have no money :(",
+            "Restart",
+            () => OnLose()
+            );
+    }
+
+    public void OnObstacleLose()
+    {
+        Debug.Log("Obstacle Lose");
+        HideObjects();
+        Time.timeScale = 0f;
+        monologWindow.SetupWindow(
+            "You got into car accident :(",
+            "Restart",
+            () => OnLose()
+            );
     }
 
     public void ResetLevel()

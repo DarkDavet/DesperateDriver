@@ -30,6 +30,8 @@ public class GameInventory: ScriptableObject
                 Stars += amount;
                 break;
         }
+        DisplayItems(Money, ItemType.MONEY);
+        DisplayItems(Stars, ItemType.KEY);
     }
 
     public GameInventoryData PackGameInventoryData()

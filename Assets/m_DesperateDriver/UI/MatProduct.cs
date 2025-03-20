@@ -20,14 +20,13 @@ public class MatProduct: MonoBehaviour
     public int Price { get { return price; } private set { price = value; } }
     public string MatTitle { get { return matTitle; } private set { matTitle = value; } }
 
-    private void OnButtonClick()
+    public void OnButtonClick()
     {
         OnProductActivated?.Invoke(this);
     }
 
     public void InitConcreteProduct()
     {
-        button.onClick.AddListener(OnButtonClick);
         MatTitle = matSetup.title;
         title.text = matSetup.title;
         icon.color = matSetup.iconColor;

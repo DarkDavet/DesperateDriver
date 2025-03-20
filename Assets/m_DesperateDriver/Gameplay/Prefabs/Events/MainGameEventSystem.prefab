@@ -90,6 +90,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+--- !u!114 &1645720187004710813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1186595919903504099, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+  m_PrefabInstance: {fileID: 477776807615814014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b7bac6281467e4a87d6d2293df3cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3366120215366734998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2888984368396520936, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
@@ -104,6 +115,17 @@ MonoBehaviour:
 --- !u!114 &3382228438115343686 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2905228173497762872, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
+  m_PrefabInstance: {fileID: 477776807615814014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b7bac6281467e4a87d6d2293df3cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6092903491039468336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5922004846637564494, guid: 8a6a63f4a644bc243bbb282dfb0ac1a7, type: 3}
   m_PrefabInstance: {fileID: 477776807615814014}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -177,6 +199,18 @@ PrefabInstance:
       propertyPath: m_LoseEventListener
       value: 
       objectReference: {fileID: 8419701165663316801}
+    - target: {fileID: 5135763505480549961, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
+      propertyPath: m_LoseFuelEventListener
+      value: 
+      objectReference: {fileID: 1645720187004710813}
+    - target: {fileID: 5135763505480549961, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
+      propertyPath: m_LoseMoneyEventListener
+      value: 
+      objectReference: {fileID: 8419701165663316801}
+    - target: {fileID: 5135763505480549961, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
+      propertyPath: m_LoseObstalceEventListener
+      value: 
+      objectReference: {fileID: 6092903491039468336}
     - target: {fileID: 5828697084297745787, guid: 55dc10f492b88df45ba3f6d5c556a5fc, type: 3}
       propertyPath: m_Name
       value: EventStations

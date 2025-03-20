@@ -10,7 +10,8 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private UpgradeData upgradeData;
     [SerializeField] private GameInventory gameInventory;
     [SerializeField] private UIUpgradeWidget upgradeWidget;
-    
+    [SerializeField] private UIDialogWindow dialogWindow;
+
 
     private int currentUpgradeLevel = 0;
 
@@ -48,23 +49,31 @@ public class UpgradeManager : MonoBehaviour
         }
         upgradeWidget.SetupWidget(upgradeSetupForWidget);
     }
-
-    public void PurchaseUpgrade()
+    public void OnPurchaseButtonClicked()
     {
         int tmpCurrentUpgradeLevel = currentUpgradeLevel + 1;
         if (upgradeDictionary.FuelCapacityUpgrades.ContainsKey(tmpCurrentUpgradeLevel) && upgradeDictionary.FuelUpgradesCosts.ContainsKey(tmpCurrentUpgradeLevel))
         {
-            if (gameInventory.RequestPayment(upgradeDictionary.FuelUpgradesCosts[tmpCurrentUpgradeLevel], ItemType.MONEY))
-            {
-                currentUpgradeLevel = tmpCurrentUpgradeLevel;
-                SetUpgradeSetup();
-                upgradeData.SaveUpgradeData();
-            }
-            
+            dialogWindow.SetupWindow(
+            $"Are you sure you want to upgrade {title} for {upgradeDictionary.FuelUpgradesCosts[tmpCurrentUpgradeLevel]}$?",
+            () => Purchase(tmpCurrentUpgradeLevel), // Confirm action
+            () => Debug.Log("Purchase cancelled.") // Cancel action
+        );
+
         }
         else
         {
             Debug.Log("No available upgrades for current level.");
+        }
+    }
+
+    public void Purchase(int tmpCurrentUpgradeLevel)
+    {
+        if (gameInventory.RequestPayment(upgradeDictionary.FuelUpgradesCosts[tmpCurrentUpgradeLevel], ItemType.MONEY))
+        {
+            currentUpgradeLevel = tmpCurrentUpgradeLevel;
+            SetUpgradeSetup();
+            upgradeData.SaveUpgradeData();
         }
     }
 

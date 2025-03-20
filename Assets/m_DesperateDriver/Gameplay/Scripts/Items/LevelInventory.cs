@@ -15,6 +15,9 @@ public class LevelInventory: ScriptableObject, IResetable
     public event Action<int, int, string> OnInventorySaved;
 
     [SerializeField] private int id;
+
+    public int Id { get => id; }
+
     [Range(0, 500)]
     public int lvlMoneyLimit;
     [Range(0, 20)]
@@ -133,7 +136,6 @@ public class LevelInventory: ScriptableObject, IResetable
         FilterData();
         OnInventorySaved?.Invoke(id, Glb_Money, ItemType.MONEY);
         OnInventorySaved?.Invoke(id, Glb_Stars, ItemType.KEY);
-        ResetObject();
     }
 
     private void FilterData()
@@ -150,7 +152,7 @@ public class LevelInventory: ScriptableObject, IResetable
 
     public void ResetObject()
     {
-        Tmp_Money = 0;
+        Tmp_Money = 30;
         DisplayItems(Tmp_Money, ItemType.MONEY);
 
         Tmp_Stars = 0;

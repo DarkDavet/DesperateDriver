@@ -38,8 +38,8 @@ public class StorageManager : SingletonGlobal<StorageManager>
 
         if (storageService == null)
         {
-            Debug.LogError("storageService is null. Cannot save game inventory data.");
-            return;
+            Debug.LogError("storageService is null. Initializing...");
+            InitStorageManager();  // As a fallback
         }
 
         storageService.Save(KEY_GAME_INVENTORY, data, success =>

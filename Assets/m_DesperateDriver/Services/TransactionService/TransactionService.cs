@@ -6,6 +6,7 @@ public class TransactionService : MonoBehaviour
 {
     [SerializeField] private GameInventory gameInventory;
     [SerializeField] private List<Product> goods;
+    [SerializeField] private UIDialogWindow dialogWindow;
 
     private Product purchasedProduct;
 
@@ -37,17 +38,27 @@ public class TransactionService : MonoBehaviour
         }
     }
 
-    public void Purchase()
+    public void OnPurchaseButtonClicked()
     {
         if (SearchDesireItem())
         {
-            if (PurchaseProcess())
-            {
-                purchasedProduct.isUnlock = true;
-                purchasedProduct.GetPurchased();
-                StorageManager.Instance.SaveGoodsData(goods);
-            }
-        };      
+            // Define actions for confirmation
+            dialogWindow.SetupWindow(
+                $"Are you sure you want to unlock {purchasedProduct.productName} for {purchasedProduct.cost}$?",
+                () => Purchase(), // Confirm action
+                () => Debug.Log("Purchase cancelled.") // Cancel action
+            );
+        }
+    }
+
+    public void Purchase()
+    {
+        if (PurchaseProcess())
+        {
+            purchasedProduct.isUnlock = true;
+            purchasedProduct.GetPurchased();
+            StorageManager.Instance.SaveGoodsData(goods);
+        }   
     }
 
     public bool SearchDesireItem()

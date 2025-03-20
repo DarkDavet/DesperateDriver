@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CarMatShop : SingletonLocal<CarMatShop>
@@ -9,8 +10,10 @@ public class CarMatShop : SingletonLocal<CarMatShop>
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private Renderer carBodyAppearance;
     [SerializeField] private Renderer carSeamsAppearance;
+    [SerializeField] private UIDialogWindow dialogWindow;
 
     private string matNameCurrent;
+    private MatProduct activeProduct;
 
     public void InitShop()
     {
@@ -25,11 +28,32 @@ public class CarMatShop : SingletonLocal<CarMatShop>
                 Debug.Log($"Mat title matched: {product.MatTitle}");
                 PaintCar(product);
             }
-            product.OnProductActivated += ShopProcessing;
+            product.OnProductActivated += SetDesireMaterial;
         }
     }
 
-    public void ShopProcessing(MatProduct activeProduct)
+    public void OnPurchaseButtonClicked()
+    {
+        if (!activeProduct.IsPurchased)
+        {
+            dialogWindow.SetupWindow(
+                $"Are you sure you want to unlock {activeProduct.MatTitle} for {activeProduct.Price}$?",
+                () => Purchase(), // Confirm action
+                () => Debug.Log("Purchase cancelled.") // Cancel action
+            );
+        }
+        else
+        {
+            PaintCar(activeProduct);
+        }
+    }
+
+    public void SetDesireMaterial(MatProduct activeProduct)
+    {
+        this.activeProduct = activeProduct;
+    }
+
+    private void Purchase()
     {
         if (activeProduct != null)
         {

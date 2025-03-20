@@ -5,10 +5,10 @@ using UnityEngine;
 public class FuelTank : MonoBehaviour
 {
     [SerializeField] private SliderController fuelBar;
-    [SerializeField] private GameEvent m_LoseEvent;
+    [SerializeField] private GameEvent m_LoseFuelEvent;
     [SerializeField] private UpgradeSetup upgradeSetup;
 
-   
+    
 
     [Range(0f, 1f)]
     [SerializeField] private float consuptionFuelActive = 0.3f;
@@ -21,6 +21,7 @@ public class FuelTank : MonoBehaviour
     public float CurrentFuel { get => currentFuel; private set => currentFuel = Mathf.Clamp(value, 0, maxFuel); }
 
     private float consupDistance = 0;
+    private bool isFuelDepleted = false;
 
     private void Start()
     {
@@ -54,9 +55,10 @@ public class FuelTank : MonoBehaviour
             fuelBar.UpdateBar(CurrentFuel);
         }
 
-        if (CurrentFuel == 0)
+        if (CurrentFuel == 0 && !isFuelDepleted)
         {
-            m_LoseEvent.Raise();
+            isFuelDepleted = true; // Prevent further event raising
+            m_LoseFuelEvent.Raise();
         }
         //CurrentFuel -= consuptionFuelPassive * Time.deltaTime; 
         return CurrentFuel;

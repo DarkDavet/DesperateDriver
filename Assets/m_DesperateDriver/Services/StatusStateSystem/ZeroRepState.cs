@@ -7,14 +7,16 @@ public class ZeroRepState: StatusState
     private RepSet _repSet;
     private UIStatusStateWidget _uiStatusStateWidget;
     private LevelInventory _levelInventory;
+    private GameEvent m_MoneyLoseEvent;
 
-    public ZeroRepState(PlayerStatusStateController statusStateController, RepSet repSet, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory) : base(statusStateController)
+    public ZeroRepState(PlayerStatusStateController statusStateController, RepSet repSet, UIStatusStateWidget uiStatusStateWidget, LevelInventory levelInventory, GameEvent moneyLoseEvent) : base(statusStateController)
     {
         _statusStateController = statusStateController;
 
         _repSet = repSet;
         _uiStatusStateWidget = uiStatusStateWidget;
         _levelInventory = levelInventory;
+        m_MoneyLoseEvent = moneyLoseEvent;
     }
 
     public override void Enter()
@@ -22,6 +24,7 @@ public class ZeroRepState: StatusState
         //_statusSet.playerBody.SetActive(true);
         //_statusAnimator.SetTrigger(_statusSet.tagAnimTrigger);
         _uiStatusStateWidget.SetStatusStateSettings(_repSet.uiColor, _repSet.statusName);
+        m_MoneyLoseEvent?.Raise();
         //_uiStatusStateWidget.SetupSliderValue(_statusSet.amountMaxLimit);
     }
 
