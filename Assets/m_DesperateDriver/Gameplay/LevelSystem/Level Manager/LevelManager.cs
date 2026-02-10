@@ -4,12 +4,15 @@ using UnityEngine;
 using System;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class LevelManager : SingletonLocal<LevelManager>
 {
     const string CompleteLevelCount_PrefsKey = "Complete Lvl Count";
     const string LastLevelIndex_PrefsKey = "Last Level Index";
     const string CurrentAttempt_PrefsKey = "Current Attempt";
+
+    public static UnityEvent OnLevelRestart = new UnityEvent();
 
     public static int CompleteLevelCount
     {
@@ -99,6 +102,7 @@ public class LevelManager : SingletonLocal<LevelManager>
     public void RestartLevel()
     {
         SelectLevel(CurrentLevelIndex, false);
+        OnLevelRestart.Invoke();
     }
 
     public void NextLevel()
@@ -134,13 +138,13 @@ public class LevelManager : SingletonLocal<LevelManager>
 
     public void SelectLevel(int levelIndex, bool indexCheck = true)
     {
-        
+
         if (indexCheck)
         {
             levelIndex = GetCorrectedIndex(levelIndex);
         }
 
-       // Debug.Log("Selected Level Index: " + levelIndex);
+        // Debug.Log("Selected Level Index: " + levelIndex);
 
         if (playeableLevels[levelIndex] == null)
         {
@@ -223,7 +227,7 @@ public class LevelManager : SingletonLocal<LevelManager>
 
     private void ClearChildsEditorVer()
     {
-        
+
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject destroyObject = transform.GetChild(i).gameObject;
@@ -231,7 +235,7 @@ public class LevelManager : SingletonLocal<LevelManager>
         }
     }
 
-    private void ClearChildsRunTimeVer() 
+    private void ClearChildsRunTimeVer()
     {
         List<GameObject> children = new List<GameObject>();
         for (int i = 0; i < transform.childCount; i++)
@@ -241,8 +245,8 @@ public class LevelManager : SingletonLocal<LevelManager>
 
         foreach (GameObject child in children)
         {
-            Destroy(child); 
+            Destroy(child);
         }
-       // Debug.Log("Cleared all child objects.");
+        // Debug.Log("Cleared all child objects.");
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TransactionService : MonoBehaviour
@@ -25,6 +24,7 @@ public class TransactionService : MonoBehaviour
             if (item.isUnlock == true)
             {
                 item.GetPurchased();
+                item.icon.color = Color.grey;
             }
         }
     }
@@ -32,7 +32,7 @@ public class TransactionService : MonoBehaviour
     private void ShowCosts(Product product)
     {
         product.costTitle.text = product.cost.ToString();
-        if (product.cost == 0 )
+        if (product.cost == 0)
         {
             product.costTitle.text = "";
         }
@@ -58,7 +58,7 @@ public class TransactionService : MonoBehaviour
             purchasedProduct.isUnlock = true;
             purchasedProduct.GetPurchased();
             StorageManager.Instance.SaveGoodsData(goods);
-        }   
+        }
     }
 
     public bool SearchDesireItem()

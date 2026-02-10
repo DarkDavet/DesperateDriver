@@ -6,6 +6,8 @@ public class MainMenuEntryPoint : MonoBehaviour
     [SerializeField] private List<UpgradeManager> upgradeManagers;
     [SerializeField] private List<LevelInventory> levelInventories;
     [SerializeField] private List<UILevelWidget> levelWidgets;
+    [SerializeField] private GameInventory gameInventory;
+    [SerializeField] private UIGameInventoryWidget gameInventoryWidget;
     [SerializeField] private UpgradeData upgradeData;
     [SerializeField] private LevelInventoryData levelInventoryData;
     [SerializeField] private TransactionService transactionService;
@@ -26,8 +28,12 @@ public class MainMenuEntryPoint : MonoBehaviour
         }
         levelInventoryData.InitDictionary();
 
+        StorageManager.Instance.LoadGameInventoryData();
         StorageManager.Instance.LoadUpgradeData(upgradeData);
         StorageManager.Instance.LoadLevelItemsData(levelInventoryData);
+
+        gameInventoryWidget.Init();
+        gameInventory.Initialize();
 
         foreach (LevelInventory levelInventory in levelInventories)
         {

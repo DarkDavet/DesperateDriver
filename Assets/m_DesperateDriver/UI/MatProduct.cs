@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatProduct: MonoBehaviour
+public class MatProduct : MonoBehaviour
 {
     [SerializeField] private CarMaterialSetup matSetup;
     [SerializeField] private TextMeshProUGUI title;
@@ -30,13 +30,13 @@ public class MatProduct: MonoBehaviour
         MatTitle = matSetup.title;
         title.text = matSetup.title;
         icon.color = matSetup.iconColor;
-        if (IsPurchased)
+        if (IsPurchased || matSetup.price == 0)
         {
             Debug.Log($"Unlock mat {matSetup.name} is initialized");
             lockIcon.gameObject.SetActive(false);
             priceTitle.gameObject.SetActive(false);
         }
-        else if (!IsPurchased) 
+        else if (!IsPurchased)
         {
             Debug.Log($"Lock mat {matSetup.name} is initialized");
             priceTitle.text = matSetup.price.ToString();

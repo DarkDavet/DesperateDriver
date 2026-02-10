@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ExitButtonHandler : MonoBehaviour
 {
     [SerializeField] private UIDialogWindow dialogWindow;
+    [SerializeField] private WinLoseEventStation winLoseEventStation;
     public Button exitButton;
 
     private void Start()
@@ -13,12 +14,13 @@ public class ExitButtonHandler : MonoBehaviour
 
     private void OnButtonClick()
     {
+        winLoseEventStation.HideObjects();
         Pause();
         dialogWindow.SetupWindow(
            $"Are you sure you want to return to main menu?",
-           () => LeaveGameplay(), 
+           () => LeaveGameplay(),
            () => Resume()
-           );  
+           );
     }
 
     private void Pause()
@@ -34,7 +36,6 @@ public class ExitButtonHandler : MonoBehaviour
 
     private void LeaveGameplay()
     {
-        Time.timeScale = 1f;
-        SceneLoader.Instance.LoadMainMenuScene();
+        winLoseEventStation.OnLevelExit();
     }
 }

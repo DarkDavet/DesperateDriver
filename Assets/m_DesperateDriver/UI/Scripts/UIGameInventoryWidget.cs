@@ -6,10 +6,9 @@ public class UIGameInventoryWidget : MonoBehaviour
     [SerializeField] private UIMoneyWidget uiMoneyWidget;
     [SerializeField] private UIStarsWidget uiStarsWidget;
 
-    private void Start()
+    public void Init()
     {
         gameInventory.OnInventoryChanged += Display;
-        gameInventory.Initialize();
     }
     private void OnDestroy()
     {

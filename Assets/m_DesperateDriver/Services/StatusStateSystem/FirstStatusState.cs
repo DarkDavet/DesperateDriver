@@ -22,7 +22,11 @@ public class FirstStatusState : StatusState
     {
         //_statusSet.playerBody.SetActive(true);
         //_statusAnimator.SetTrigger(_statusSet.tagAnimTrigger);
-        _timer.SetupTimer(_statusSet.amountMaxLimit);
+        if (!_timer.IsTimerLaunched)
+        {
+            _timer.SetupTimer(_statusSet.amountMaxLimit);
+        }
+
         _uiStatusStateWidget.SetStatusStateSettings(_statusSet.uiColor, _statusSet.statusName);
         _uiStatusStateWidget.SetupSliderValue(_statusSet.amountMaxLimit);
         _value.Value = _statusSet.value;

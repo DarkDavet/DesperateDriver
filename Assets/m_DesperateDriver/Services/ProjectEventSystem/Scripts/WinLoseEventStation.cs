@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
-public class WinLoseEventStation: MonoBehaviour
+public class WinLoseEventStation : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _hideObjects;
 
@@ -44,7 +44,7 @@ public class WinLoseEventStation: MonoBehaviour
     {
         m_WinEventListener.Subscribe();
 
-        m_LoseFuelEventListener.Subscribe(); 
+        m_LoseFuelEventListener.Subscribe();
         m_LoseMoneyEventListener.Subscribe();
         m_LoseObstalceEventListener.Subscribe();
     }
@@ -66,25 +66,25 @@ public class WinLoseEventStation: MonoBehaviour
         StorageManager.Instance.SaveGameInventoryData();
         levelInventory.SetGlobalData();
         HideObjects();
-        
+
         resultWindow.SetupWindow(
             levelInventory,
             inventoryBroker,
-            () => OnNextlevel(), 
+            () => OnNextlevel(),
             () => OnLevelExit(),
             () => OnRestartlevel()
         );
-       
+
     }
 
     private void OnRestartlevel()
     {
         UnityEngine.Debug.Log($"Time.timeScale before restarting: {Time.timeScale}");
         Time.timeScale = 1f;
-        levelManager.RestartLevel();
         iceCreamTrunk.Clear();
         levelInventory.ResetObject();
         Debug.Log($"Time.timeScale after restarting: {Time.timeScale}");
+        levelManager.RestartLevel();
     }
 
     private void OnNextlevel()
@@ -94,15 +94,16 @@ public class WinLoseEventStation: MonoBehaviour
         levelManager.NextLevel();
     }
 
-    private void OnLevelExit()
+    public void OnLevelExit()
     {
+        iceCreamTrunk.Clear();
         Time.timeScale = 1f;
         SceneLoader.Instance.LoadMainMenuScene();
     }
 
-    private void HideObjects()
+    public void HideObjects()
     {
-        foreach ( var obj in _hideObjects )
+        foreach (var obj in _hideObjects)
         {
             obj.SetActive(false);
         }
@@ -149,9 +150,11 @@ public class WinLoseEventStation: MonoBehaviour
             );
     }
 
+
+
     public void ResetLevel()
     {
-        
+
         foreach (MonoBehaviour obj in sceneObjects)
         {
             if (obj is IResetable)

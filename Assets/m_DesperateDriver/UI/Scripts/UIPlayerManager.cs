@@ -8,7 +8,7 @@ public class UIPlayerManager : MonoBehaviour
     [SerializeField] private UIMoneyRemoveWidget uiMoneyRemoveWidget;
     [SerializeField] private UIStatusStateWidget uiStatusStateWidget;
 
-    private void Start()
+    public void Init()
     {
         levelInventory.OnInventoryIntialized += SetupPlayerWidgets;
     }
@@ -27,15 +27,17 @@ public class UIPlayerManager : MonoBehaviour
 
     public void OnMoneyAdded(int addedAmount)
     {
+        Debug.Log("Invoke OnItemsAdded works!");
         uiMoneyAddedWidget.UpdateWidget(addedAmount);
         uiStatusStateWidget.UpdateWidget(addedAmount);
     }
 
     public void OnMoneyRemoved(int removedAmount)
     {
+        Debug.Log("Invoke OnItemsRemoved works!");
         uiMoneyRemoveWidget.UpdateWidget(removedAmount);
         uiStatusStateWidget?.UpdateWidget(removedAmount);
     }
 
-   
+
 }

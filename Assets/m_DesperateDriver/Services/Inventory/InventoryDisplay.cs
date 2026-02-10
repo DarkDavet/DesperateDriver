@@ -18,7 +18,7 @@ public class InventoryDisplay : MonoBehaviour
     Dictionary<GameObject, int> placementMap = new Dictionary<GameObject, int>();
     HashSet<int> occupiedPlaces = new HashSet<int>();
 
-    void Start()
+    public void Init()
     {
         inventory.OnInventoryChanged += UpdateDisplay;
 

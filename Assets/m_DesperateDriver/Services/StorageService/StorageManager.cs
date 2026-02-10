@@ -6,7 +6,7 @@ using UnityEngine;
 public class StorageManager : SingletonGlobal<StorageManager>
 {
     [SerializeField] private GameInventory gameInventory;
-   // [SerializeField] private UpgradeData upgradeData;
+    // [SerializeField] private UpgradeData upgradeData;
 
     private IStorageService storageService;
 
@@ -23,7 +23,6 @@ public class StorageManager : SingletonGlobal<StorageManager>
         {
             storageService = new JsonToFileStorageService();
         }
-        LoadGameInventoryData();
     }
 
     public void SaveGameInventoryData()

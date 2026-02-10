@@ -1,8 +1,7 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
-public class ItemsEventStation: MonoBehaviour
+using UnityEngine;
+
+public class ItemsEventStation : MonoBehaviour
 {
     [SerializeField] private LevelInventory levelInventory;
     [SerializeField] private UIPlayerManager uIPlayerManager;
@@ -12,7 +11,7 @@ public class ItemsEventStation: MonoBehaviour
     [SerializeField] private GameEventListener m_PickBottleEventListener;
     [SerializeField] private GameEventListener m_PickFuelEventListener;
     [SerializeField] private GameEventListener m_UseGasStationEventListener;
-   
+
 
     private int genereatedAmount;
     public void Initialize()
@@ -21,6 +20,9 @@ public class ItemsEventStation: MonoBehaviour
         m_PickBottleEventListener.EventHandler = OnBottlePick;
         m_PickFuelEventListener.EventHandler = OnFuelPick;
         m_UseGasStationEventListener.EventHandler = OnGasStationUse;
+
+        levelInventory.OnItemsAdded += OnMoneyEarned;
+        levelInventory.OnItemsRemoved += OnMoneyRemoved;
     }
 
     private void OnEnable()
@@ -37,6 +39,16 @@ public class ItemsEventStation: MonoBehaviour
         m_PickBottleEventListener.Unsubscribe();
         m_PickFuelEventListener.Unsubscribe();
         m_UseGasStationEventListener.Unsubscribe();
+    }
+
+    public void OnMoneyEarned(int amount)
+    {
+        uIPlayerManager.OnMoneyAdded(amount);
+    }
+
+    public void OnMoneyRemoved(int amount)
+    {
+        uIPlayerManager.OnMoneyRemoved(amount);
     }
 
     public void OnMoneyPick()

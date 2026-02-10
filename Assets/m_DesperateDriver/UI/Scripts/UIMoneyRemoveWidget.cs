@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class UIMoneyRemoveWidget: MonoBehaviour, IUIWidget
+public class UIMoneyRemoveWidget : MonoBehaviour, IUIWidget
 {
     [SerializeField] private TextMeshProUGUI textRemovedMoney;
     [SerializeField] private UIMoneyRemovePopupAnim animRemove;
@@ -10,7 +10,7 @@ public class UIMoneyRemoveWidget: MonoBehaviour, IUIWidget
 
     public void UpdateWidget(int amount)
     {
-        amountMoneyRemoved = - amount;
+        amountMoneyRemoved = amount;
         textRemovedMoney.text = amountMoneyRemoved.ToString();
         animRemove.PlayPopupAnimation();
     }
