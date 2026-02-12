@@ -8,16 +8,16 @@ It is a 3D racing and management game where players deliver various types of ice
   
 ## Key features
 * Architecture:
-* implemented state pattern for decoupled systems, including car handling states, ice cream quality stages, and player reputation logic.
-* scriptableObject-based event system that allows creating and assigning game events directly within the project window for high flexibility.
-* transaction system that handling all in-game purchases, including upgrades, visual customization, and level pack unlocking.
-* custom level system integraded in a single gameplay scene
+<br>- implemented state pattern for decoupled systems, including car handling states, ice cream quality stages, and player reputation logic.
+<br>- scriptableObject-based event system that allows creating and assigning game events directly within the project window for high flexibility.
+<br>- transaction system that handling all in-game purchases, including upgrades, visual customization, and level pack unlocking.
+<br>- custom level system integraded in a single gameplay scene
 * Optimization:
-* using object pooling for frequently reused VFX, interactive game objects, and dynamic UI icons
-* utilized low-poly models and optimized mesh data
-* organized UI elements into separate canvas groups
+<br>- using object pooling for frequently reused VFX, interactive game objects, and dynamic UI icons
+<br>- utilized low-poly models and optimized mesh data
+<br>- organized UI elements into separate canvas groups
 * UI:
-* implementation independent UI systems: in-game shop, levels' panel with ability  to unlock access to parts of this panel, a level inventory widget for each level, an inventory for the game in general, player reputation widget, ice cream panel with expire indicators(amount of cells for ice creams depends from purchased upgades), fuel indicator   
+<br>- implementation independent UI systems: in-game shop, levels' panel with ability  to unlock access to parts of this panel, a level inventory widget for each level, an inventory for the game in general, player reputation widget, ice cream panel with expire indicators(amount of cells for ice creams depends from purchased upgades), fuel indicator   
 
 ## Project structure
 * Assets/m_DesperateDriver/Gameplay/LevelSystem - custom level management logic
