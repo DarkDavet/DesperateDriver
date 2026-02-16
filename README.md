@@ -1,5 +1,7 @@
 # Desperate Driver
 
+<img width="534" height="300" alt="dd_3" src="https://github.com/user-attachments/assets/eb2d58a4-56ab-4127-b2a9-bfcfd57f1a64" />
+
 It is a 3D racing and management game where players deliver various types of ice cream to clients. Manage your vehicle, avoid obstacles, and ensure product freshness to maximize rewards. Earn money to upgrade your car, customize its appearance and unlock new levels.
 
 ## Technical description
