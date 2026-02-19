@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5218346001475578977}
   - component: {fileID: 9015968394272044230}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: terrain_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 5324380397737458151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -362.6, y: 0, z: -293}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -199,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 6765093718114916144}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.977148, y: -5.7572846, z: 18.273895}
+  m_LocalPosition: {x: -326.8, y: 0, z: -66.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -708,11 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 305.96
       objectReference: {fileID: 0}
     - target: {fileID: 4607212623595776519, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_LocalRotation.w
@@ -797,6 +797,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8331991671327761938, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 5016238692477401882, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 1470470436256995701, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 7617690387076162375, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 6504431398988307327, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 1734131150648384553, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 7732247137839765693, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 796459019131147210, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 2857252257060149495, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 1339352970037953901, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 4057418837985664736, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 6056603983242117635, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 3262349167725729758, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9189274667783466543, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       insertIndex: 7
