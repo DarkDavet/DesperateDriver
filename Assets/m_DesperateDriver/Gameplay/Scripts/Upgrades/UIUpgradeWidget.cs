@@ -11,6 +11,7 @@ public class UIUpgradeWidget : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nextValue;
     [SerializeField] private TextMeshProUGUI costValue;
     [SerializeField] private Button button;
+    [SerializeField] private Color color;
 
     public void SetupWidget(UpgradeSetup upgradeSetup)
     {
@@ -20,7 +21,7 @@ public class UIUpgradeWidget : MonoBehaviour
             foreach (GameObject upgradeObject in upgradeVisualObjects)
             {
                 var image = upgradeObject.GetComponent<Image>();
-                image.color = Color.green;  
+                image.color = color;  
             }
 
             currentValue.text = upgradeSetup.capacity.ToString();
