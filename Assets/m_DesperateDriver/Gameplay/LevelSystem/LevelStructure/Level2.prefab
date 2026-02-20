@@ -742,6 +742,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5271488937611605318, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6707414874587229614, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 3905.0356
@@ -769,6 +773,10 @@ PrefabInstance:
     - target: {fileID: 7791188985065032790, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: m_text
       value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132428366843662586, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8668717745886280111, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       propertyPath: skyboxMat
@@ -809,6 +817,9 @@ PrefabInstance:
     - {fileID: 4057418837985664736, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
     - {fileID: 6056603983242117635, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
     - {fileID: 3262349167725729758, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 5907578817293843664, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 8138548659431345640, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
+    - {fileID: 368170949788115830, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9189274667783466543, guid: 21ad64f55d5d80247a0538475536a178, type: 3}
       insertIndex: 7
