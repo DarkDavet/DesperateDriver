@@ -55,12 +55,11 @@ public class FuelTank : MonoBehaviour
             fuelBar.UpdateBar(CurrentFuel);
         }
 
-        if (CurrentFuel == 0 && !isFuelDepleted)
+        if (CurrentFuel <= 0 && !isFuelDepleted)
         {
-            isFuelDepleted = true; // Prevent further event raising
+            isFuelDepleted = true; 
             m_LoseFuelEvent.Raise();
         }
-        //CurrentFuel -= consuptionFuelPassive * Time.deltaTime; 
         return CurrentFuel;
     }
 
