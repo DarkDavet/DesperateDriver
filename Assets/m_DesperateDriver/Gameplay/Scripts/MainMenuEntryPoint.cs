@@ -21,7 +21,6 @@ public class MainMenuEntryPoint : MonoBehaviour
         CarMatShop.Instance.InitShop();
         transactionService.InitService();
 
-        // Initialize Upgrade Managers
         foreach (UpgradeManager upgradeManager in upgradeManagers)
         {
             upgradeManager.InitManager();
@@ -40,10 +39,10 @@ public class MainMenuEntryPoint : MonoBehaviour
             levelInventory.Initialize();
         }
 
-        /*foreach (UILevelWidget widget in levelWidgets)
+        foreach (UILevelWidget widget in levelWidgets)
         {
             widget.InitWidget();
-        }*/
+        }
 
     }
 }

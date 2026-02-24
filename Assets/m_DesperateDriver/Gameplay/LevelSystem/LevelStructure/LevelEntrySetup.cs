@@ -13,7 +13,6 @@ public class LevelEntrySetup : MonoBehaviour
 
     private void Start()
     {
-        levelInventory.ResetObject();
         Debug.Log($"LevelInventory Instance ID in LevelEntrySetup: {levelInventory.GetInstanceID()}");
         iceCreamInventoryDisplay.Init();
         itemsEventStation.Initialize();

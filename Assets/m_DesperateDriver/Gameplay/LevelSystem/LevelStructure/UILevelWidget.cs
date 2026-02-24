@@ -9,7 +9,7 @@ public class UILevelWidget : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyLimit;
     [SerializeField] private TextMeshProUGUI moneyHas;
     [SerializeField] private List<GameObject> visualElements;
-    public void OnEnable()
+    public void InitWidget()
     {
         moneyLimit.text = levelInventory.lvlMoneyLimit.ToString();
         moneyHas.text = levelInventory.Glb_Money.ToString();
