@@ -48,8 +48,14 @@ public class LevelInventory : ScriptableObject, IResetable
 
     private int generated_Sum { get; set; }
 
-    public void Initialize()
+    public void PrepareForInit()
     {
+        Glb_Money = 0;
+        Glb_Stars = 0;
+    }
+    public void Init()
+    {
+        Debug.Log($"Inv {id} has: glb.money = {Glb_Money}   glb.stars = {Glb_Stars}");
         OnInventoryReady?.Invoke(id, Glb_Money, ItemType.MONEY);
         OnInventoryReady?.Invoke(id, Glb_Stars, ItemType.KEY);
     }

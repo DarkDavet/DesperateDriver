@@ -36,7 +36,7 @@ public class MainMenuEntryPoint : MonoBehaviour
 
         foreach (LevelInventory levelInventory in levelInventories)
         {
-            levelInventory.Initialize();
+            levelInventory.Init();
         }
 
         foreach (UILevelWidget widget in levelWidgets)

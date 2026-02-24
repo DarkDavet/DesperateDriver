@@ -12,6 +12,7 @@ public class LevelInventoryData : SingletonGlobal<LevelInventoryData>
     {
         foreach (var level in levelInventoriesList)
         {
+            level.PrepareForInit();
             level.OnInventoryReady += FillDictionary;
             level.OnInventorySaved += UpdateDictionary;
         }
