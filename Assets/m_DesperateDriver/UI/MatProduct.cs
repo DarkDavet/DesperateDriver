@@ -32,15 +32,11 @@ public class MatProduct : MonoBehaviour
         icon.color = matSetup.iconColor;
         if (IsPurchased || matSetup.price == 0)
         {
-            Debug.Log($"Unlock mat {matSetup.name} is initialized");
-            lockIcon.gameObject.SetActive(false);
-            priceTitle.gameObject.SetActive(false);
+            UnlockConcreteProduct();
         }
         else if (!IsPurchased)
         {
-            Debug.Log($"Lock mat {matSetup.name} is initialized");
-            priceTitle.text = matSetup.price.ToString();
-            Price = matSetup.price;
+            LockConcreteProduct();
         }
     }
 
@@ -50,6 +46,13 @@ public class MatProduct : MonoBehaviour
         IsPurchased = true;
         lockIcon.gameObject.SetActive(false);
         priceTitle.gameObject.SetActive(false);
+    }
+
+    private void LockConcreteProduct()
+    {
+        Debug.Log($"Lock mat {matSetup.name} is initialized");
+        priceTitle.text = matSetup.price.ToString();
+        Price = matSetup.price;
     }
 
     public Material ExtractBodyMaterial()
