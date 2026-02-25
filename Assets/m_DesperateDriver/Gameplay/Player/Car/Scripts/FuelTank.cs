@@ -12,8 +12,8 @@ public class FuelTank : MonoBehaviour
 
     [Range(0f, 1f)]
     [SerializeField] private float consuptionFuelActive = 0.3f;
-    [Range(0f, 1f)]
-    [SerializeField] private float consuptionFuelPassive = 0.03f;
+    //[Range(0f, 1f)]
+   // [SerializeField] private float consuptionFuelPassive = 0.03f;
 
     private float currentFuel;
     private float maxFuel;
@@ -60,6 +60,7 @@ public class FuelTank : MonoBehaviour
             isFuelDepleted = true; 
             m_LoseFuelEvent.Raise();
         }
+        //CurrentFuel -= consuptionFuelPassive * Time.deltaTime;
         return CurrentFuel;
     }
 

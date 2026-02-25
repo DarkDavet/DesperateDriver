@@ -93,7 +93,7 @@ public class TransactionService : MonoBehaviour
         else
         {
            monologWindow.SetupWindow(
-           $"You haven't enough stars to unlock {purchasedProduct.productName} {purchasedProduct.cost}",
+           $"You haven't enough stars to unlock {purchasedProduct.productName}",
            "OK",
            () => Debug.Log("The transaction is canceled.")
            );

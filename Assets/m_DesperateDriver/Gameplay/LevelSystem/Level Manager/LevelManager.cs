@@ -53,7 +53,7 @@ public class LevelManager : SingletonLocal<LevelManager>
     [SerializeField] LevelsList levels;
     private List<Level> playeableLevels = new();
 
-    public event Action OnLevelStarted;
+   // public event Action OnLevelStarted;
 
     public void InitPlayableLevels()
     {

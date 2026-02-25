@@ -40,7 +40,7 @@ public class LevelInventory : ScriptableObject, IResetable
 
     [ReadOnly, SerializeField] private int tmp_Stars;
     [ReadOnly, SerializeField] private int glb_Stars;
-    [ReadOnly, SerializeField] private bool isFullCompleted = false;
+   // [ReadOnly, SerializeField] private bool isFullCompleted = false;
     public int Tmp_Money { get => tmp_Money; private set => tmp_Money = Mathf.Clamp(value, 0, lvlMoneyLimit); }
     public int Glb_Money { get => glb_Money; private set => glb_Money = Mathf.Clamp(value, 0, lvlMoneyLimit); }
     public int Tmp_Stars { get => tmp_Stars; private set => tmp_Stars = Mathf.Clamp(value, 0, lvlStarsLimit); }
