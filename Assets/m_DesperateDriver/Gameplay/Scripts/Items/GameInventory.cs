@@ -57,6 +57,32 @@ public class GameInventory: ScriptableObject
 
     public bool RequestPayment(int cost, string itemType)
     {
+
+        switch (itemType)
+        {
+            case ItemType.MONEY:
+                if (cost <= Money)
+                {
+                    Debug.Log($"Stars (GI): {Money}");
+                    Debug.Log($"Requested Price (Money): {Money}");
+                    return true;
+                }
+                break;
+            case ItemType.KEY:
+                if (cost <= Stars)
+                {
+                    Debug.Log($"Stars (GI): {Stars}");
+                    Debug.Log($"Requested Price (Stars): {Stars}");
+                    return true;
+                }
+                break;
+        }
+
+        return false;
+    }
+
+    public void ProcessPayment(int cost, string itemType)
+    {
         switch (itemType)
         {
             case ItemType.MONEY:
@@ -64,9 +90,7 @@ public class GameInventory: ScriptableObject
                 {
                     Money -= cost;
                     DisplayItems(Money, ItemType.MONEY);
-                    Debug.Log($"Money NOW!!!: {Money}");
                     StorageManager.Instance.SaveGameInventoryData();
-                    return true;
                 }
                 break;
             case ItemType.KEY:
@@ -74,13 +98,10 @@ public class GameInventory: ScriptableObject
                 {
                     Stars -= cost;
                     DisplayItems(Stars, ItemType.KEY);
-                    Debug.Log($"Keys NOW!!!: {Stars}");
                     StorageManager.Instance.SaveGameInventoryData();
-                    return true;
                 }
                 break;
         }
-        return false;
     }
 }
 

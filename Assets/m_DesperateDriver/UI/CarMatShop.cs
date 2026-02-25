@@ -11,6 +11,7 @@ public class CarMatShop : SingletonLocal<CarMatShop>
     [SerializeField] private Renderer carBodyAppearance;
     [SerializeField] private Renderer carSeamsAppearance;
     [SerializeField] private UIDialogWindow dialogWindow;
+    [SerializeField] private UIMonologWindow monologWindow;
 
     private string matNameCurrent;
     private MatProduct activeProduct;
@@ -34,18 +35,17 @@ public class CarMatShop : SingletonLocal<CarMatShop>
 
     public void OnPurchaseButtonClicked()
     {
-        if (!activeProduct.IsPurchased)
+        if (activeProduct != null)
         {
-            dialogWindow.SetupWindow(
-                $"Are you sure you want to unlock {activeProduct.MatTitle} for {activeProduct.Price}$?",
-                () => Purchase(), // Confirm action
-                () => Debug.Log("Purchase cancelled.") // Cancel action
-            );
-        }
-        else
-        {
-            PaintCar(activeProduct);
-        }
+            if (!activeProduct.IsPurchased)
+            {
+                TryPurchase();
+            }
+            else
+            {
+                PaintCar(activeProduct);
+            }
+        }    
     }
 
     public void SetDesireMaterial(MatProduct activeProduct)
@@ -53,20 +53,31 @@ public class CarMatShop : SingletonLocal<CarMatShop>
         this.activeProduct = activeProduct;
     }
 
+    private void TryPurchase()
+    {
+        if (gameInventory.RequestPayment(activeProduct.Price, ItemType.MONEY))
+        {
+            dialogWindow.SetupWindow(
+            $"Are you sure you want to unlock {activeProduct.MatTitle} for {activeProduct.Price}$?",
+            () => Purchase(), // Confirm action
+            () => Debug.Log("Purchase cancelled.") // Cancel action
+        );
+        }
+        else
+        {
+            monologWindow.SetupWindow(
+            $"You haven't enough money to unlock {activeProduct.MatTitle}",
+            "OK",
+            () => Debug.Log("Purchase cancelled.")
+            );
+        }
+    }
+
     private void Purchase()
     {
-        if (activeProduct != null)
-        {
-            if (!activeProduct.IsPurchased && gameInventory.RequestPayment(activeProduct.Price, ItemType.MONEY))
-            {
-                activeProduct.UnlockConcreteProduct();
-                StorageManager.Instance.SaveCarColorsData(matGoods);
-            }
-            else if (activeProduct.IsPurchased)
-            {
-                PaintCar(activeProduct);
-            }
-        }
+        gameInventory.ProcessPayment(activeProduct.Price, ItemType.MONEY);
+        activeProduct.UnlockConcreteProduct();
+        StorageManager.Instance.SaveCarColorsData(matGoods);
     }
 
     private void PaintCar(MatProduct activeProduct)

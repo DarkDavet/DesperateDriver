@@ -439,6 +439,7 @@ MonoBehaviour:
   carBodyAppearance: {fileID: 1174597553}
   carSeamsAppearance: {fileID: 924420380}
   dialogWindow: {fileID: 1381184176}
+  monologWindow: {fileID: 1851667446}
 --- !u!4 &339246571
 Transform:
   m_ObjectHideFlags: 0
@@ -2788,6 +2789,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1910254882777235090, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
   m_PrefabInstance: {fileID: 1291905726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1851667446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 705341322586567624, guid: 203a9b27c5c3f4345bab238f14bacf35, type: 3}
+  m_PrefabInstance: {fileID: 1084743761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6daab7b327a39104ca26cb127bb5a4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1968517677 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8711719651583309930, guid: 7b6c7ce13c0227c46bcf399501252f4e, type: 3}
