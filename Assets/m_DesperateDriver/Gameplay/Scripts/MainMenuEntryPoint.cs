@@ -26,6 +26,7 @@ public class MainMenuEntryPoint : MonoBehaviour
             upgradeManager.InitManager();
         }
         levelInventoryData.InitDictionary();
+        gameInventory.PrepareForInit();
 
         StorageManager.Instance.LoadGameInventoryData();
         StorageManager.Instance.LoadUpgradeData(upgradeData);

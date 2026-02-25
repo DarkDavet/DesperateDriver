@@ -13,6 +13,12 @@ public class GameInventory: ScriptableObject
     private int Money { get => money; set => money = Mathf.Clamp(value, 0, 1000000); }
     private int Stars { get => stars; set => stars = Mathf.Clamp(value, 0, 100); }
 
+    public void PrepareForInit()
+    {
+        Money = 0;
+        Stars = 0;
+    }
+
     public void Initialize()
     {
         DisplayItems(Money, ItemType.MONEY);
