@@ -6,7 +6,6 @@ using UnityEngine;
 public class StorageManager : SingletonGlobal<StorageManager>
 {
     [SerializeField] private GameInventory gameInventory;
-    // [SerializeField] private UpgradeData upgradeData;
 
     private IStorageService storageService;
 
@@ -49,7 +48,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save inventory.");
+                Debug.LogWarning("Failed to save inventory.");
             }
         });
     }
@@ -66,7 +65,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load inventory.");
+                Debug.LogWarning("Failed to load inventory.");
             }
         });
     }
@@ -81,7 +80,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save upgrade levels.");
+                Debug.LogWarning("Failed to save upgrade levels.");
 
             }
         });
@@ -99,7 +98,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load upgrade levels.");
+                Debug.LogWarning("Failed to load upgrade levels.");
             }
         });
     }
@@ -115,7 +114,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save level items.");
+                Debug.LogWarning("Failed to save level items.");
 
             }
         });
@@ -133,7 +132,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load level items.");
+                Debug.LogWarning("Failed to load level items.");
             }
         });
     }
@@ -149,7 +148,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save current car material.");
+                Debug.LogWarning("Failed to save current car material.");
 
             }
         });
@@ -167,7 +166,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load current car material.");
+                Debug.LogWarning("Failed to load current car material.");
             }
         });
     }
@@ -188,7 +187,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save goods' status.");
+                Debug.LogWarning("Failed to save goods' status.");
 
             }
         });
@@ -209,7 +208,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load goods' status.");
+                Debug.LogWarning("Failed to load goods' status.");
             }
 
         });
@@ -231,7 +230,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to save car colors.");
+                Debug.LogWarning("Failed to save car colors.");
 
             }
         });
@@ -252,7 +251,7 @@ public class StorageManager : SingletonGlobal<StorageManager>
             }
             else
             {
-                Debug.LogError("Failed to load car colors");
+                Debug.LogWarning("Failed to load car colors");
             }
 
         });
