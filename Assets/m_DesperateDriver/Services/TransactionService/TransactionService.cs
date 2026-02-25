@@ -6,6 +6,7 @@ public class TransactionService : MonoBehaviour
     [SerializeField] private GameInventory gameInventory;
     [SerializeField] private List<Product> goods;
     [SerializeField] private UIDialogWindow dialogWindow;
+    [SerializeField] private UIMonologWindow monologWindow;
 
     private Product purchasedProduct;
 
@@ -40,25 +41,29 @@ public class TransactionService : MonoBehaviour
 
     public void OnPurchaseButtonClicked()
     {
+
         if (SearchDesireItem())
         {
-            // Define actions for confirmation
-            dialogWindow.SetupWindow(
-                $"Are you sure you want to unlock {purchasedProduct.productName} for {purchasedProduct.cost}$?",
-                () => Purchase(), // Confirm action
-                () => Debug.Log("Purchase cancelled.") // Cancel action
-            );
+            TryPurchase();
+        }
+
+        ResetTransaction();
+    }
+
+    private void ResetTransaction()
+    {
+        foreach (var item in goods)
+        {
+            item.isActive = false;
         }
     }
 
     public void Purchase()
     {
-        if (PurchaseProcess())
-        {
-            purchasedProduct.isUnlock = true;
-            purchasedProduct.GetPurchased();
-            StorageManager.Instance.SaveGoodsData(goods);
-        }
+        gameInventory.ProcessPayment(purchasedProduct.cost, ItemType.KEY);
+        purchasedProduct.isUnlock = true;
+        purchasedProduct.GetPurchased();            
+        StorageManager.Instance.SaveGoodsData(goods);
     }
 
     public bool SearchDesireItem()
@@ -74,12 +79,24 @@ public class TransactionService : MonoBehaviour
         return false;
     }
 
-    private bool PurchaseProcess()
+    private void TryPurchase()
     {
-        if (purchasedProduct != null && gameInventory.RequestPayment(purchasedProduct.cost, ItemType.KEY))
+        if (gameInventory.RequestPayment(purchasedProduct.cost, ItemType.KEY))
         {
-            return true;
+            // Define actions for confirmation
+            dialogWindow.SetupWindow(
+                $"Are you sure you want to unlock {purchasedProduct.productName} for {purchasedProduct.cost} stars?",
+                () => Purchase(), // Confirm action
+                () => Debug.Log("The transaction is canceled.") // Cancel action
+            );
         }
-        return false;
+        else
+        {
+           monologWindow.SetupWindow(
+           $"You haven't enough stars to unlock {purchasedProduct.productName} {purchasedProduct.cost}",
+           "OK",
+           () => Debug.Log("The transaction is canceled.")
+           );
+        }
     }
 }

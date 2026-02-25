@@ -311,6 +311,7 @@ MonoBehaviour:
   - {fileID: 451933991}
   - {fileID: 1809276169}
   dialogWindow: {fileID: 1381184176}
+  monologWindow: {fileID: 1851667446}
 --- !u!4 &210174709
 Transform:
   m_ObjectHideFlags: 0
