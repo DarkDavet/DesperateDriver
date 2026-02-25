@@ -3767,10 +3767,18 @@ PrefabInstance:
       propertyPath: dialogWindow
       value: 
       objectReference: {fileID: 1381184176}
+    - target: {fileID: 8538622029443495385, guid: 7b6c7ce13c0227c46bcf399501252f4e, type: 3}
+      propertyPath: monologWindow
+      value: 
+      objectReference: {fileID: 1851667446}
     - target: {fileID: 8711719651583309930, guid: 7b6c7ce13c0227c46bcf399501252f4e, type: 3}
       propertyPath: dialogWindow
       value: 
       objectReference: {fileID: 1381184176}
+    - target: {fileID: 8711719651583309930, guid: 7b6c7ce13c0227c46bcf399501252f4e, type: 3}
+      propertyPath: monologWindow
+      value: 
+      objectReference: {fileID: 1851667446}
     - target: {fileID: 9093445122328838280, guid: 7b6c7ce13c0227c46bcf399501252f4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
