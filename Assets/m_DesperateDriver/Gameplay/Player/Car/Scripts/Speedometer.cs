@@ -12,7 +12,7 @@ public class Speedometer : MonoBehaviour
     private float currentSpeed;
     public float CurrentSpeed { get => currentSpeed; private set { currentSpeed = value; } }
 
-    private void Start()
+    public void Init()
     {
         CurrentSpeed = maxSpeed;
         speedBar.SetupBar(CurrentSpeed);

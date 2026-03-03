@@ -7,7 +7,7 @@ public class LightManager : MonoBehaviour
     public List<Light> lights;
     public List<Light> brakeLights;
 
-    private void Start()
+    public void Init()
     {
         foreach (Light light in lights)
         {

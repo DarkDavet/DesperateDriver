@@ -261,6 +261,7 @@ MonoBehaviour:
   uIGameInventoryWidget: {fileID: 247047386348030714}
   uiPlayerManager: {fileID: 8734440519402086096}
   iceCreamInventoryDisplay: {fileID: 405336602730067765}
+  vehicleController: {fileID: 6707414875892569543}
 --- !u!1 &7574725004058670078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,11 +2174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1910254881733232377, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 3905.0356
+      value: 3905.035
       objectReference: {fileID: 0}
     - target: {fileID: 1910254881733232377, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 24406.473
+      value: 24406.469
       objectReference: {fileID: 0}
     - target: {fileID: 1910254882777235086, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
       propertyPath: speedBar
@@ -2317,6 +2318,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1910254882777235090, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
   m_PrefabInstance: {fileID: 5158610569084480343}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6707414875892569543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1910254882777235088, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}
+  m_PrefabInstance: {fileID: 5158610569084480343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0c0e1758b5b2942a428351144d5dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6707414875892569560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1910254882777235087, guid: d3e69c0890d45ba42817909f26c8ae7d, type: 3}

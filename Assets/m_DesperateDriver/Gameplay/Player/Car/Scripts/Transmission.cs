@@ -6,7 +6,7 @@ using UnityEngine;
 public class Transmission : MonoBehaviour
 {
     public WheelController wheelController;
-    public VehicelAccessoryController accessoryController;
+    public VehicleController accessoryController;
     public Speedometer speedometer;
     public Gear[] gears;
 

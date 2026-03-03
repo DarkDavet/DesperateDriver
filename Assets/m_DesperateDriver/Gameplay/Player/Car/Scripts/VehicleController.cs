@@ -1,56 +1,114 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.XR;
 
-[RequireComponent(typeof(CarInputManager))]
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(LightManager))]
 public class VehicleController : MonoBehaviour
 {
-    [SerializeField] private CarInputManager inputManager;
-    [SerializeField] private LightManager lightManager;
-    [SerializeField] private UIManager uIManager;
-    public List<WheelCollider> thortleWheels;
-    public List<WheelCollider> steerWheels;
-    public List<GameObject> brakeLamps; 
-    public List<GameObject> meshes;
-    public float strengthCofficient = 20000f;
-    public float maxTurn = 20f;
-    public float brakeStrength;
+    [SerializeField] private UIManager uiManager;
+    public List<GameObject> brakeLamps;
+    public Color brakeColor;
 
-    public Rigidbody rb;
-    public Transform centerOfMass;
+    private LightManager lightManager;
+    private WheelController wheelController;
+    private Speedometer speedometer;
+    private Tach tach;
+    private FuelTank fuelTank;
+    private Transmission transmission;
+    private Rigidbody rb;
 
-    private void Start()
+    private KeyCode switchFrontLight = KeyCode.L;
+    private KeyCode hitKlaxon = KeyCode.K;
+
+    private Color originalColorBrakeLamps;
+
+    private Renderer[] renderersBrakeLamps;
+
+    [NonSerialized]
+    public float speedInfo;
+    private float speedTech;
+    private float distanceTotalInfo;
+    private float distancePerFrameInfo;
+
+    private bool isInit = false;
+
+    private void Awake()
     {
-        Application.targetFrameRate = 60; // Set to your desired frame rate
-        QualitySettings.vSyncCount = 1; // Enable VSync
-        inputManager = GetComponent<CarInputManager>();
         lightManager = GetComponent<LightManager>();
+        wheelController = GetComponent<WheelController>();
+        speedometer = GetComponent<Speedometer>();
+        tach = GetComponent<Tach>();
+        fuelTank = GetComponent<FuelTank>();
+        transmission = GetComponent<Transmission>();
         rb = GetComponent<Rigidbody>();
-        rb.interpolation = RigidbodyInterpolation.Interpolate;
-
-        if (centerOfMass)
+        
+    }
+    public void Init()
+    {
+        renderersBrakeLamps = new Renderer[brakeLamps.Count];
+        for (int i = 0; i < brakeLamps.Count; i++)
         {
-            rb.centerOfMass = centerOfMass.localPosition;
+            originalColorBrakeLamps = brakeLamps[i].GetComponent<Renderer>().material.color;
+            renderersBrakeLamps[i] = brakeLamps[i].GetComponent<Renderer>();
         }
+
+        wheelController.Init();
+        lightManager.Init();
+        transmission.SetupGear();
+        fuelTank.Init();
+        speedometer.Init();
+        
+        isInit = true;
     }
 
     private void Update()
     {
-        if (inputManager.lit)
+        if (!isInit) return;
+
+        MechanicAccessoryUpdate();
+        ElectroAccessoryUpdate();
+    }
+
+    private void MechanicAccessoryUpdate()
+    {
+        speedTech = Mathf.Abs(transform.InverseTransformVector(rb.linearVelocity).z);
+        speedInfo = speedometer.CalculateSpeed(speedTech);
+        distancePerFrameInfo = tach.ShowDistancePerFrame();
+        distanceTotalInfo = tach.CalculateDistance(speedInfo);
+
+        transmission.UpdateGears();
+
+        uiManager.ShowSpeed(speedInfo);
+        uiManager.ShowDistance(distanceTotalInfo);
+    }
+
+    private void ElectroAccessoryUpdate()
+    {
+        fuelTank.DecreaseFuelLevel(distancePerFrameInfo); 
+        transmission.SwitchGears();
+
+        if (Input.GetKeyDown(switchFrontLight))
         {
             lightManager.SwitchLights();
         }
 
-        foreach (GameObject lamp in brakeLamps)
+        foreach (Renderer lampRenderer in renderersBrakeLamps)
         {
-            lamp.GetComponent<Renderer>().material.SetColor("_Color", inputManager.brake ? new Color(0.5f, 0.11f, 0.11f) : Color.black);
+            //lampRenderer.material.SetColor("_EmissionColor", Input.GetKey(driveManager.pressBrakes) ? brakeColor : originalColorBrakeLamps);
+
+            if (Input.GetKey(wheelController.pressBrakes))
+            {
+                lampRenderer.material.EnableKeyword("_EMISSION");
+                lampRenderer.material.SetColor("_EmissionColor", brakeColor);
+            }
+            else
+            {
+                lampRenderer.material.SetColor("_EmissionColor", originalColorBrakeLamps);
+                lampRenderer.material.DisableKeyword("_EMISSION");
+            }
         }
-        if (inputManager.brake)
+
+        if (Input.GetKey(wheelController.pressBrakes))
         {
             lightManager.SwitchBrakeLights(true);
         }
@@ -58,36 +116,11 @@ public class VehicleController : MonoBehaviour
         {
             lightManager.SwitchBrakeLights(false);
         }
-        //uIManager.ChangeSpeed(transform.InverseTransformVector(rb.velocity).z);
-    }
-
-
-    private void FixedUpdate()
-    {
-        foreach (WheelCollider wheel in thortleWheels)
+        
+        if (Input.GetKeyDown(hitKlaxon))
         {
-            if (inputManager.brake)
-            {
-                wheel.motorTorque = 0f;
-                wheel.brakeTorque = brakeStrength * Time.deltaTime * 5;
-                Debug.Log("Brakes work");
-            }
-            else
-            {
-                wheel.motorTorque = strengthCofficient * Time.deltaTime * inputManager.thortle;
-                wheel.brakeTorque = 0f;
-            }
-           
+            AudioManager.Instance.Play("Klaxon");
         }
-
-        steerWheels[0].GetComponent<WheelCollider>().steerAngle = maxTurn * inputManager.steer;
-        steerWheels[0].transform.localEulerAngles = new Vector3(0f, inputManager.steer * maxTurn, -180f);
-        steerWheels[1].GetComponent<WheelCollider>().steerAngle = maxTurn * inputManager.steer;
-        steerWheels[1].transform.localEulerAngles = new Vector3(0f, inputManager.steer * maxTurn, 0f);
-
-        foreach (GameObject mech in meshes)
-        {
-            mech.transform.Rotate(rb.linearVelocity.magnitude * (transform.InverseTransformDirection(rb.linearVelocity).z >= 0 ? 1 : -1) / (2 * Mathf.PI * 0.31f), 0f, 0f);
-        }
+        
     }
 }

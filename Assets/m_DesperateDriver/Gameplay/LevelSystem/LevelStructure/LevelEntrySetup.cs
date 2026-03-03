@@ -11,9 +11,12 @@ public class LevelEntrySetup : MonoBehaviour
     [SerializeField] private UIPlayerManager uiPlayerManager;
     [SerializeField] private InventoryDisplay iceCreamInventoryDisplay;
 
+    [SerializeField] private VehicleController vehicleController;
+
     private void Start()
     {
         Debug.Log($"LevelInventory Instance ID in LevelEntrySetup: {levelInventory.GetInstanceID()}");
+        vehicleController.Init();
         iceCreamInventoryDisplay.Init();
         itemsEventStation.Initialize();
         winLoseEventStation.Initialize();

@@ -38,12 +38,12 @@ public class WheelController: MonoBehaviour
     [NonSerialized]
     public float torque;
 
-    // Find all the WheelColliders down in the hierarchy.
-	void Start()
-	{
-		m_Wheels = GetComponentsInChildren<WheelCollider>();
+	private bool isInit = false;
 
-		for (int i = 0; i < m_Wheels.Length; ++i) 
+    public void Init()
+	{
+        m_Wheels = GetComponentsInChildren<WheelCollider>();
+        for (int i = 0; i < m_Wheels.Length; ++i) 
 		{
 			var wheel = m_Wheels [i];
 
@@ -55,14 +55,18 @@ public class WheelController: MonoBehaviour
 				ws.transform.localScale = new Vector3(ws.transform.localScale.x * -1f, 1, 1);
 			}
 		}
+
+		isInit = true;
 	}
 
 	// This is a really simple approach to updating wheels.
 	// We simulate a rear wheel drive car and assume that the car is perfectly symmetric at local zero.
 	// This helps us to figure our which wheels are front ones and which are rear.
-	void Update()
+	private void Update()
 	{
-		m_Wheels[0].ConfigureVehicleSubsteps(criticalSpeed, stepsBelow, stepsAbove);
+        if (!isInit) return;
+
+        m_Wheels[0].ConfigureVehicleSubsteps(criticalSpeed, stepsBelow, stepsAbove);
 
 		float angle = maxAngle * Input.GetAxisRaw("Horizontal");
 		torque = maxTorque * Input.GetAxisRaw("Vertical");
