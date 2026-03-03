@@ -31,7 +31,10 @@ public class UIMoneyAddPopupAnim: MonoBehaviour
 
     public void PlayPopupAnimation()
     {
-        canvasGroup.alpha = 0;
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
 
         Sequence sequence = DOTween.Sequence();
 
