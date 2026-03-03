@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aa6c1098534264e8317024a54d503c, type: 3}
   m_Name: FuelCapacitiesSetup
   m_EditorClassIdentifier: 
-  value1: 30
-  value2: 40
-  value3: 50
-  value4: 60
+  value1: 50
+  value2: 60
+  value3: 70
+  value4: 80

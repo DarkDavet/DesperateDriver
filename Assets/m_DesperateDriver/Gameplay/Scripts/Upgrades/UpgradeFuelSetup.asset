@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UpgradeFuelSetup
   m_EditorClassIdentifier: 
   level: 0
-  capacity: 0
+  capacity: 30
   capacityNext: 0
   cost: 0

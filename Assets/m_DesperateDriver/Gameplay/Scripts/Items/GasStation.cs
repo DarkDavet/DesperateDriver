@@ -15,6 +15,10 @@ public class GasStation : MonoBehaviour
         if (collider.CompareTag(playerTag))
         {
             //vfxEffect = PoolManager.Instance.GetObject("RedExplosionVFX", transform.position, transform.rotation);
+            if (fillTankCoroutine != null)
+            {
+                StopCoroutine(fillTankCoroutine);
+            }
             fillTankCoroutine = StartCoroutine(FillTankCoroutine());
         }
     }
@@ -32,7 +36,11 @@ public class GasStation : MonoBehaviour
     {
         if (collider.CompareTag(playerTag))
         {
-            StopCoroutine(fillTankCoroutine);
+            if (fillTankCoroutine != null)
+            {
+                StopCoroutine(fillTankCoroutine);
+                fillTankCoroutine = null;
+            }
         }
     }
 }

@@ -8,59 +8,55 @@ public class FuelTank : MonoBehaviour
     [SerializeField] private GameEvent m_LoseFuelEvent;
     [SerializeField] private UpgradeSetup upgradeSetup;
 
-    
+    [Header("Fuel consumption settings")]
+   // [Range(0f, 1f)][SerializeField] private float consuptionFuelActive = 0.3f;
+   // [Range(0f, 1f)] [SerializeField] private float consuptionFuelPassive = 0.03f;
+    [SerializeField] private float m_DistancePerFullTank = 1000f;
 
-    [Range(0f, 1f)]
-    [SerializeField] private float consuptionFuelActive = 0.3f;
-    //[Range(0f, 1f)]
-   // [SerializeField] private float consuptionFuelPassive = 0.03f;
-
+    private bool isFuelDepleted = false;
     private float currentFuel;
     private float maxFuel;
+    private float consumptionCoefficient;
+    private float consumptionPassiveCoefficient;
     public float MaxFuel { get => maxFuel; private set => maxFuel = Mathf.Clamp(value, 0, 100); }
     public float CurrentFuel { get => currentFuel; private set => currentFuel = Mathf.Clamp(value, 0, maxFuel); }
 
-    private float consupDistance = 0;
-    private bool isFuelDepleted = false;
 
-    private void Start()
+    public void Init()
     {
-        if (upgradeSetup != null)
+        if (upgradeSetup != null && upgradeSetup.capacity > 0)
         {
-            if (upgradeSetup.capacity > 0)
-            {
-                maxFuel = upgradeSetup.capacity;
-                CurrentFuel = maxFuel;
-                fuelBar.SetupBar(CurrentFuel);
-            }
-            else
-            {
-                Debug.LogError("UpgradeSetup capacity must be greater than zero.");
-            }
+            consumptionCoefficient = 60f / m_DistancePerFullTank;
+            consumptionPassiveCoefficient = consumptionCoefficient / 10;
+            MaxFuel = upgradeSetup.capacity;
+            CurrentFuel = MaxFuel;
+            isFuelDepleted = false;
+
+            fuelBar.SetupBar(MaxFuel);
+            fuelBar.UpdateBar(CurrentFuel);
         }
         else
         {
-            Debug.LogError("UpgradeSetup is not assigned.");
-
+            Debug.LogError("UpgradeSetup is missing or invalid!");
         }
     }
 
     public float DecreaseFuelLevel(float distance)
     {
-        consupDistance += distance;
-        if (consupDistance >= 0.05)
-        {
-            CurrentFuel -= consuptionFuelActive;
-            consupDistance = 0;
-            fuelBar.UpdateBar(CurrentFuel);
-        }
+        if (isFuelDepleted) return 0;
+
+        float fuelSpent = (distance * consumptionCoefficient) + (Time.deltaTime * consumptionPassiveCoefficient);
+        CurrentFuel -= fuelSpent;
+
+        fuelBar.UpdateBar(CurrentFuel);
 
         if (CurrentFuel <= 0 && !isFuelDepleted)
         {
-            isFuelDepleted = true; 
+            CurrentFuel = 0;
+            isFuelDepleted = true;
             m_LoseFuelEvent.Raise();
         }
-        //CurrentFuel -= consuptionFuelPassive * Time.deltaTime;
+
         return CurrentFuel;
     }
 
