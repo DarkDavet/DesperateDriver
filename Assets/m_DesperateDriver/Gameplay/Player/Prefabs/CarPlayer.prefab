@@ -230,11 +230,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.4
   m_SuspensionSpring:
-    spring: 22940.412
-    damper: 3670.466
+    spring: 21904.594
+    damper: 3504.7349
     targetPosition: 0.5
   m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 0.5963545
+  m_ForceAppPointDistance: 0.6963544
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -301,11 +301,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.4
   m_SuspensionSpring:
-    spring: 22697.99
-    damper: 3631.6785
+    spring: 21917.508
+    damper: 3506.8013
     targetPosition: 0.5
   m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 0.5963545
+  m_ForceAppPointDistance: 0.6963544
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -403,11 +403,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.4
   m_SuspensionSpring:
-    spring: 27302.014
-    damper: 4368.322
+    spring: 28082.492
+    damper: 4493.1987
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19619998
-  m_ForceAppPointDistance: 0.5963545
+  m_SuspensionDistance: 0.19620001
+  m_ForceAppPointDistance: 0.6963544
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1192,11 +1192,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.4
   m_SuspensionSpring:
-    spring: 27059.588
-    damper: 4329.534
+    spring: 28095.406
+    damper: 4495.265
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 0.5963545
+  m_ForceAppPointDistance: 0.6963544
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1279,7 +1279,7 @@ Transform:
   m_GameObject: {fileID: 6033672829829475028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1603,7 +1603,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3545213714465391696, guid: d62516fef5a674844977e8e53e6d299a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
