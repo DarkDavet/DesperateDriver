@@ -1,46 +1,66 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class GasStation : MonoBehaviour
 {
     [SerializeField] private GameEvent m_GasStationEvent;
+    [SerializeField] private float fillInterval = 0.2f;
+    [SerializeField] private float cooldownAfterExit = 2.0f;
 
-    private GameObject vfxEffect;
-    private const string playerTag = "Player";
-    private Coroutine fillTankCoroutine;
+    private Coroutine fillCoroutine;
+    private bool isFillDelay = false;
+    private bool isCarHere = false;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(playerTag))
+        if (collider.CompareTag("Player"))
         {
-            //vfxEffect = PoolManager.Instance.GetObject("RedExplosionVFX", transform.position, transform.rotation);
-            if (fillTankCoroutine != null)
+            var fuelTank = collider.GetComponent<FuelTank>();
+            if (fuelTank != null) fuelTank.IsInsideGasStation = true;
+
+            isCarHere = true;
+
+            if (!isFillDelay && fillCoroutine == null)
             {
-                StopCoroutine(fillTankCoroutine);
+                fillCoroutine = StartCoroutine(FillTankCoroutine());
             }
-            fillTankCoroutine = StartCoroutine(FillTankCoroutine());
         }
     }
 
     private IEnumerator FillTankCoroutine()
     {
-       while (true)
+        while (isCarHere)
         {
-            m_GasStationEvent.Raise();
-            yield return new WaitForSeconds(0.2f);
+            m_GasStationEvent?.Raise();
+            yield return new WaitForSeconds(fillInterval);
         }
+        fillCoroutine = null;
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if (collider.CompareTag(playerTag))
+        if (collider.CompareTag("Player"))
         {
-            if (fillTankCoroutine != null)
+            isCarHere = false;
+
+            var fuelTank = collider.GetComponent<FuelTank>();
+            if (fuelTank != null) fuelTank.IsInsideGasStation = false;
+
+            if (fillCoroutine != null)
             {
-                StopCoroutine(fillTankCoroutine);
-                fillTankCoroutine = null;
+                StopCoroutine(fillCoroutine);
+                fillCoroutine = null;
             }
+
+            if (!isFillDelay) StartCoroutine(DelayAfterFill());
         }
+    }
+
+    private IEnumerator DelayAfterFill()
+    {
+        isFillDelay = true;
+        yield return new WaitForSeconds(cooldownAfterExit);
+        isFillDelay = false;
     }
 }

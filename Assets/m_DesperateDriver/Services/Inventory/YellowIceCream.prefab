@@ -565,18 +565,18 @@ MonoBehaviour:
   _statusSets:
   - statusName: Fresh
     uiColor: {r: 0.40566033, g: 1, b: 0.5582364, a: 1}
-    amountMinLimit: 20
-    amountMaxLimit: 30
+    amountMinLimit: 30
+    amountMaxLimit: 45
     value: 40
   - statusName: Well
     uiColor: {r: 0.956426, g: 1, b: 0.4039216, a: 1}
-    amountMinLimit: 10
-    amountMaxLimit: 20
+    amountMinLimit: 15
+    amountMaxLimit: 30
     value: 25
   - statusName: Bad
     uiColor: {r: 1, g: 0.49626982, b: 0.4039216, a: 1}
     amountMinLimit: 0
-    amountMaxLimit: 10
+    amountMaxLimit: 15
     value: 10
   uiStatusStateWidget: {fileID: 9125904434758274657}
   _timer: {fileID: 6547388290261668894}

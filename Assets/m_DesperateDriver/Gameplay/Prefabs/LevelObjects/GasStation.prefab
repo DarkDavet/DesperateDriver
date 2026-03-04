@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8381312994821739729}
   m_Layer: 0
   m_Name: GasStation
-  m_TagString: Untagged
+  m_TagString: GasStation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GasStationEvent: {fileID: 11400000, guid: fdc82133c52365e46991fe80a178403d, type: 2}
+  fillInterval: 0.2
+  cooldownAfterExit: 1
 --- !u!1 &8842037923122609560
 GameObject:
   m_ObjectHideFlags: 0

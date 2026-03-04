@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FuelTank : MonoBehaviour
@@ -14,12 +12,14 @@ public class FuelTank : MonoBehaviour
     [SerializeField] private float m_DistancePerFullTank = 1000f;
 
     private bool isFuelDepleted = false;
+
     private float currentFuel;
     private float maxFuel;
     private float consumptionCoefficient;
     private float consumptionPassiveCoefficient;
     public float MaxFuel { get => maxFuel; private set => maxFuel = Mathf.Clamp(value, 0, 100); }
     public float CurrentFuel { get => currentFuel; private set => currentFuel = Mathf.Clamp(value, 0, maxFuel); }
+    public bool IsInsideGasStation { get; set; }
 
 
     public void Init()
@@ -41,13 +41,13 @@ public class FuelTank : MonoBehaviour
         }
     }
 
+
     public float DecreaseFuelLevel(float distance)
     {
-        if (isFuelDepleted) return 0;
+        if (isFuelDepleted || IsInsideGasStation) return CurrentFuel;
 
         float fuelSpent = (distance * consumptionCoefficient) + (Time.deltaTime * consumptionPassiveCoefficient);
         CurrentFuel -= fuelSpent;
-
         fuelBar.UpdateBar(CurrentFuel);
 
         if (CurrentFuel <= 0 && !isFuelDepleted)
@@ -56,12 +56,12 @@ public class FuelTank : MonoBehaviour
             isFuelDepleted = true;
             m_LoseFuelEvent.Raise();
         }
-
         return CurrentFuel;
     }
 
     public float IncreaseFuelLevel(float fuelAmount)
     {
+
         if (fuelAmount > 0)
         {
             CurrentFuel += fuelAmount;

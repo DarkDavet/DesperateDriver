@@ -76,7 +76,8 @@ public class ItemsEventStation : MonoBehaviour
     {
         if ((fuelTank.CurrentFuel < fuelTank.MaxFuel) && levelInventory.RequestPayment(1))
         {
-            fuelTank.IncreaseFuelLevel(1f);
+            Debug.Log("ItemStation: I'm here");
+            fuelTank.IncreaseFuelLevel(2f);
             Debug.Log($"Current fuel level: {fuelTank.CurrentFuel}");
             Debug.Log($"Max fuel level: {fuelTank.MaxFuel}");
         }
